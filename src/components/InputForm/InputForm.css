@@ -1,0 +1,15 @@
+.gardenIn {
+  background-color: antiquewhite;
+}
+.gardenIn:hover {
+  background-color: firebrick;
+}
+
+::placeholder{
+    color: goldenrod;
+}
+
+.bop{
+    color: red;
+    background-color: goldenrod;
+}
