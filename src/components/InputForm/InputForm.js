@@ -29,7 +29,7 @@ function InputForm(props) {
       <Input
         className="gardenIn"
         autoFocus={true}
-        focusBorderColor="red.300"
+        focusbordercolor="red.300"
         variant="outlined"
         placeholder="Length in Ft."
         width={150}
@@ -60,7 +60,7 @@ function InputForm(props) {
           dispatch({ type: "SET_GARDEN_DIMENSIONS", payload: dataObject });
         }}
       >
-        Create Garden
+       Submit Dimensions
       </button>
       <section>
         <p value={0}>Cubic Feet: {cuFt}</p>
