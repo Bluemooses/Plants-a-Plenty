@@ -19,6 +19,9 @@ function InputForm(props) {
     width: Number(width),
     length: Number(length),
     height: Number(height),
+    hammer: true,
+    screws: true,
+    soilCuYd: cuYards,
   };
 
   return (
