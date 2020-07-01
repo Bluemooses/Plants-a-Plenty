@@ -57,10 +57,10 @@ function InputForm(props) {
       />
       <button
         onClick={() => {
-          dispatch({ type: "SET_GARDEN_DIMENSIONS", payload: dataObject });
+          dispatch({ type: "POST_MATERIALS", payload: dataObject });
         }}
       >
-       Submit Dimensions
+        Submit Dimensions
       </button>
       <section>
         <p value={0}>Cubic Feet: {cuFt}</p>
