@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class VeggieButton extends Component {
-  componentDidMount() {
-    console.log(this.props.vegImages);
-  }
-
-  doAThing(payload, count) {
-    count += 1;
+  //   Dispatches payload object created from map.
+  countVeggie(payload) {
     this.props.dispatch({
       type: "VEGGIE_CLICKED",
       payload: payload,
@@ -18,10 +14,11 @@ class VeggieButton extends Component {
     return (
       <div>
         {/* Mapping through vegetable images and targeting their id */}
-        {this.props.vegImages.map((veggie, i) => {
-          let count = 1;
+        {this.props.vegImages.map((veggie) => {
+          let payload = {
+            type: veggie.type,
+          }; //this is what we want to keep track of;
 
-          let payload = { type: veggie.type, id: veggie.id, count: count }; //this is what we want to keep track of;
           return (
             <div>
               {/* Appends name to help user define buttons */}
@@ -30,9 +27,9 @@ class VeggieButton extends Component {
               {/* Provides the image clicked which handles adding or removing vegetables by their type. */}
               <img
                 onClick={() => {
-                  count = 1;
-                  this.doAThing(payload, count);
+                  this.countVeggie(payload);
                 }}
+                key={veggie.id}
                 height={50}
                 width={50}
                 src={veggie.img}
@@ -41,6 +38,7 @@ class VeggieButton extends Component {
 
               {/* Provides the remove button which will handle removing vegetables by their type */}
               <button
+                key={veggie.id}
                 onClick={() =>
                   this.props.dispatch({
                     type: "VEGGIE_REMOVED",
