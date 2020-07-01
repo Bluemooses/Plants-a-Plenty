@@ -22,10 +22,29 @@ import EditPage from "../EditPage/EditPage";
 
 import "./App.css";
 
+import carrot from "../../images/carrot.png";
+import bellPepper from "../../images/bell-pepper.png";
+import lettuce from "../../images/lettuce.png";
+import beans from "../../images/beans.png";
+import peas from "../../images/peas.png";
+import corn from "../../images/corn.png";
 class App extends Component {
+  state = {
+    carrot: carrot,
+    bellPepper: bellPepper,
+    lettuce: lettuce,
+    beans: beans,
+    peas: peas,
+    corn: corn,
+  };
+
   componentDidMount() {
     this.props.dispatch({ type: "FETCH_USER" });
     this.props.dispatch({ type: "GET_VEGGIES" });
+    this.props.dispatch({
+      type: "SET_VEGETABLE_BUTTON_PICTURES",
+      payload: this.state,
+    });
   }
 
   render() {

@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import VeggieButton from "../VeggieButton/VeggieButton";
 
 class EditPage extends Component {
   render() {
     return (
       <div>
-        <h2>Hello SENORA!</h2><p>Why</p>
+        <VeggieButton />
+        <h2>Hello SENORA!</h2>
+        <p>Why</p>
       </div>
     );
   }

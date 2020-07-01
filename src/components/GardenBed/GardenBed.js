@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import VeggieButton from "../VeggieButton/VeggieButton";
 
 class GardenBed extends Component {
   state = {
@@ -20,7 +21,6 @@ class GardenBed extends Component {
   render() {
     return (
       <div>
-        <h2>Hello amigo!</h2>'<p>Why</p>
         {/* Maps image  */}
         {this.state.veggies.map((veggie, i) => {
           return (
@@ -54,6 +54,7 @@ class GardenBed extends Component {
             </li>
           );
         })}
+        <VeggieButton />
       </div>
     );
   }
