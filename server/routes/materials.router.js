@@ -22,8 +22,27 @@ router.get("/", (req, res) => {
  * POST route template
  */
 router.post("/", (req, res) => {
-  console.log(req.body);
-  
+  values = [
+    req.body.sqFt,
+    req.body.width,
+    req.body.length,
+    req.body.height,
+    req.body.hammer,
+    req.body.screws,
+    req.body.soilCuYd,
+  ];
+
+  queryText = `INSERT INTO "Materials" ("sqFt", "wood_width", "wood_length", "wood_height", "screws", "drill", "cuYd") VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+  console.log(values);
+
+  pool
+    .query(queryText, values)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log("axios POST err", error);
+    });
 });
 
 module.exports = router;

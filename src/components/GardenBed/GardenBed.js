@@ -7,9 +7,9 @@ class GardenBed extends Component {
   };
   componentDidMount() {
     console.log(this.props.state);
-    this.props.dispatch({
-      type: "GET_VEGGIES",
-    });
+    // this.props.dispatch({
+    //   type: "GET_VEGGIES",
+    // });
     console.log(this.props.state.veggies);
     console.log(this.state);
   }
@@ -54,7 +54,6 @@ class GardenBed extends Component {
             </li>
           );
         })}
-        <button></button>
       </div>
     );
   }

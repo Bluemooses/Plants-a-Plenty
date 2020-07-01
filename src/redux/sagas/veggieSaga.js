@@ -8,10 +8,6 @@ function* fetchVeggies() {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    // the config includes credentials which
-    // allow the server session to recognize the user
-    // If a user is logged in, this will return their information
-    // from the server session (req.user)
     const response = yield axios.get(`/api/veggies`, config);
     yield put({ type: "SET_VEGGIES", payload: response.data });
   } catch (error) {
@@ -19,8 +15,8 @@ function* fetchVeggies() {
   }
 }
 
-function* userSaga() {
+function* veggieSaga() {
   yield takeLatest("GET_VEGGIES", fetchVeggies);
 }
 
-export default userSaga;
+export default veggieSaga;

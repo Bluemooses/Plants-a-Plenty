@@ -1,6 +1,7 @@
-const veggieReducer = (state = [], action) => {
+const materialsReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_MATERIALS":
+      console.log("Yo", action.payload);
       return action.payload;
     case "UNSET_MATERIALS":
       return [];
@@ -9,4 +10,4 @@ const veggieReducer = (state = [], action) => {
   }
 };
 
-export default veggieReducer;
+export default materialsReducer;
