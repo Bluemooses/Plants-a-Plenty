@@ -7,7 +7,39 @@ class VeggieButton extends Component {
   }
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        {/* Mapping through vegetable images and targeting their id */}
+        {this.props.vegImages.map((veggie, i) => {
+          return (
+            <div>
+              <img
+                onClick={(id) =>
+                  this.props.dispatch({
+                    type: "VEGGIE_CLICKED",
+                    payload: veggie.id,
+                  })
+                }
+                height={50}
+                width={50}
+                src={veggie.img}
+                alt="oopsies"
+              ></img>
+              <button
+                onClick={(id) =>
+                  this.props.dispatch({
+                    type: "VEGGIE_REMOVED",
+                    payload: veggie.id,
+                  })
+                }
+              >
+                Remove
+              </button>
+            </div>
+          );
+        })}
+      </div>
+    );
   }
 }
 

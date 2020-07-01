@@ -9,10 +9,10 @@ const vegetableButtonReducer = (
   state = [
     { img: carrot, id: 1, type: "Carrot" },
     { img: bellPepper, id: 2, type: "Bell Pepper" },
-    { lettuce: lettuce, id: 3, type: "Lettuce" },
-    { beans: beans, id: 4, type: "Beans" },
-    { peas: peas, id: 5, type: "Peas" },
-    { corn: corn, id: 6, type: "Corn" },
+    { img: lettuce, id: 3, type: "Lettuce" },
+    { img: beans, id: 4, type: "Beans" },
+    { img: peas, id: 5, type: "Peas" },
+    { img: corn, id: 6, type: "Corn" },
   ],
   action
 ) => {
