@@ -7,18 +7,7 @@ class DescriptionCard extends Component {
   state = {
     veggies: this.props.state.veggies,
   };
-  componentDidMount() {
-    console.log(this.props.state);
-    // this.props.dispatch({
-    //   type: "GET_VEGGIES",
-    // });
-    console.log(this.props.state.veggies);
-    console.log(this.state);
-  }
 
-  doAThing() {
-    console.log("Auebo");
-  }
   render() {
     return (
       <div>
@@ -56,7 +45,6 @@ class DescriptionCard extends Component {
           );
         })}
         <VeggieButton />
-
         <GardenBed />
       </div>
     );

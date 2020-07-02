@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Input } from "@material-ui/core";
 import "./InputForm.css";
+import { Redirect, useHistory } from "react-router-dom";
+import { push } from "connected-react-router";
+
 function InputForm(props) {
   const [length, setLength] = useState(0);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   let cuFt = Number((length * width * height).toFixed(2));
   let sqFt = Number((length * width).toFixed(2));
@@ -58,6 +62,7 @@ function InputForm(props) {
       <button
         onClick={() => {
           dispatch({ type: "POST_MATERIALS", payload: dataObject });
+          history.push("/create-garden");
         }}
       >
         Submit Dimensions
