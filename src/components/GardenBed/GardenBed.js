@@ -6,6 +6,7 @@ class GardenBed extends Component {
     veggies: {},
     seedCount: {},
   };
+
   componentDidMount() {
     this.setState({
       veggies: this.props.state.veggies,
@@ -23,6 +24,13 @@ class GardenBed extends Component {
       seedCount: nextProps.state.seedCount,
     });
   }
+  addVeggie = () => {
+    console.log("click");
+    this.props.dispatch({
+      type: "POST_VEGGIE_COUNTS",
+      payload: this.state.seedCount,
+    });
+  };
 
   render() {
     return (
@@ -35,6 +43,9 @@ class GardenBed extends Component {
           <li>Peas: {this.state.seedCount.peas}</li>
           <li>Corn: {this.state.seedCount.corn}</li>
         </ul>
+        <button onClick={() => this.addVeggie()}>
+          Add Veggies to My Garden
+        </button>
       </div>
     );
   }

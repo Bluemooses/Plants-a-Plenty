@@ -2,32 +2,20 @@ import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
 function* vegButtonCountSaga() {
-  yield takeLatest("GET_MATERIALS", getMaterials);
-  yield takeLatest("POST_VEGGIE", postMaterials);
+  yield takeLatest("POST_VEGGIE_COUNTS", postVeggieCount);
 }
 
-function* getMaterials() {
+function* postVeggieCount(action) {
+  console.log(action.payload);
+
   try {
     const config = {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    const response = yield axios.get(`/api/materials/`);
-    yield put({ type: "SET_MATERIALS", payload: response.data });
-    console.log(response.data.ID);
-  } catch (error) {
-    console.log("User get request failed", error);
-  }
-}
-
-function* postMaterials(action) {
-  try {
-    const config = {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    };
-    yield axios.post(`/api/materials`, action.payload, config);
-    yield put({ type: "GET_MATERIALS" });
+    console.log(action.payload);
+    yield axios.post(`/api/seeds`, action.payload, config);
+    // yield put({ type: "GET_MATERIALS" });
   } catch (error) {
     console.log("Post err", error);
   }
