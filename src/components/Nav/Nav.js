@@ -28,7 +28,6 @@ const Nav = (props) => (
           <Link className="nav-link" to="/my-gardens">
             My Gardens
           </Link>
-          <LogOutButton className="nav-link" />
         </>
       )}
       {/* Always show this link since the about page is not protected */}

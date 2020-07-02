@@ -16,11 +16,12 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
-import GardenBed from "../GardenBed/GardenBed";
+import GardenBed from "../DescriptionCard/DescriptionCard";
 import UserGardens from "../UserGardens/UserGardens";
 import EditPage from "../EditPage/EditPage";
 
 import "./App.css";
+import DescriptionCard from "../DescriptionCard/DescriptionCard";
 
 class App extends Component {
   componentDidMount() {
@@ -53,7 +54,11 @@ class App extends Component {
             <ProtectedRoute exact path="/dimensions" component={InfoPage} />
             <ProtectedRoute exact path="/create-garden" component={GardenBed} />
             <ProtectedRoute exact path="/edit-garden" component={EditPage} />
-            <ProtectedRoute exact path="/my-gardens" component={UserGardens} />
+            <ProtectedRoute
+              exact
+              path="/my-gardens"
+              component={DescriptionCard}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

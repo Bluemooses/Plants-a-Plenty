@@ -33,7 +33,7 @@ class VeggieButton extends Component {
                 height={50}
                 width={50}
                 src={veggie.img}
-                alt="oopsies"
+                alt={veggie.type}
               ></img>
 
               {/* Provides the remove button which will handle removing vegetables by their type */}

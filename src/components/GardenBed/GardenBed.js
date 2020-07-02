@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import VeggieButton from "../VeggieButton/VeggieButton";
+
 
 class GardenBed extends Component {
   state = {
@@ -11,50 +11,16 @@ class GardenBed extends Component {
     // this.props.dispatch({
     //   type: "GET_VEGGIES",
     // });
-    console.log(this.props.state.veggies);
-    console.log(this.state);
+    console.log(this.props.state.seedCount);
+  }
+  componentDidUpdate() {
+    console.log(this.props.state.seedCount);
   }
 
-  doAThing() {
-    console.log("Auebo");
-  }
   render() {
     return (
       <div>
-        {/* Maps image  */}
-        {this.state.veggies.map((veggie, i) => {
-          return (
-            <img
-              height={100}
-              width={150}
-              src={veggie.img}
-              alt={veggie.veggie_name}
-            ></img>
-          );
-        })}
-        {/* Maps for description */}
-        {this.state.veggies.map((veggie, i) => {
-          return <li key={i}>{veggie.description}</li>;
-        })}
-        {/* Maps name and button */}
-        {this.state.veggies.map((veggie, i) => {
-          return (
-            <li key={i}>
-              {veggie.veggie_name}
-              <button
-                onClick={(id) => {
-                  this.props.dispatch({
-                    type: "DELETE_ITEM",
-                    payload: veggie.ID,
-                  });
-                }}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
-        <VeggieButton />
+          <p>We want a garden BED NOW!</p>
       </div>
     );
   }
