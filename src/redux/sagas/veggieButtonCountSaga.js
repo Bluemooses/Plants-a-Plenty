@@ -15,7 +15,7 @@ function* postVeggieCount(action) {
     };
     console.log(action.payload);
     yield axios.post(`/api/seeds`, action.payload, config);
-    // yield put({ type: "GET_MATERIALS" });
+    yield put({ type: "SET_USER_SEEDS", payload: action.payload });
   } catch (error) {
     console.log("Post err", error);
   }
