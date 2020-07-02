@@ -27,6 +27,8 @@ const vegetableButtonCountReducer = (
         case "Lettuce":
           return { ...state, lettuce: state.lettuce + 1 };
           break;
+        default:
+          return state;
       }
 
       break;
