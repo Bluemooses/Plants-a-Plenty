@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class UserGardens extends Component {
-
-    componentDidMount(){
-        console.log(this.props);
-        console.log(this.props.state);
-    }
+  componentDidMount() {
+    console.log(this.props);
+    console.log(this.props.state);
+    console.log(this.props.history);
+  }
   render() {
     return (
       <div>

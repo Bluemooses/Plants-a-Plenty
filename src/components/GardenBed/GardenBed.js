@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class GardenBed extends Component {
   state = {
@@ -8,28 +9,31 @@ class GardenBed extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props.history);
+
     this.setState({
       veggies: this.props.state.veggies,
       seedCount: this.props.state.seedCount,
     });
   }
-  componentDidUpdate() {
-    console.log(this.props.state.seedCount);
-  }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    console.log(nextProps.state.seedCount);
+    // console.log(nextProps);
+
+    // console.log(nextProps.state.seedCount);
     this.setState({
       seedCount: nextProps.state.seedCount,
     });
   }
-  addVeggie = () => {
+
+  addVeggie = (props) => {
     console.log("click");
     this.props.dispatch({
       type: "POST_VEGGIE_COUNTS",
       payload: this.state.seedCount,
     });
+    console.log(props);
+    this.props.history.push("/current-garden");
   };
 
   render() {
@@ -43,7 +47,7 @@ class GardenBed extends Component {
           <li>Peas: {this.state.seedCount.peas}</li>
           <li>Corn: {this.state.seedCount.corn}</li>
         </ul>
-        <button onClick={() => this.addVeggie()}>
+        <button onClick={(props) => this.addVeggie(props)}>
           Add Veggies to My Garden
         </button>
       </div>
@@ -54,4 +58,4 @@ const mapStateToProps = (state) => ({
   state: state,
 });
 
-export default connect(mapStateToProps)(GardenBed);
+export default connect(mapStateToProps)(withRouter(GardenBed));

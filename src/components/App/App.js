@@ -22,6 +22,7 @@ import EditPage from "../EditPage/EditPage";
 
 import "./App.css";
 import DescriptionCard from "../DescriptionCard/DescriptionCard";
+import GardenComplete from "../GardenComplete/GardenComplete";
 
 class App extends Component {
   componentDidMount() {
@@ -58,6 +59,11 @@ class App extends Component {
               exact
               path="/my-gardens"
               component={DescriptionCard}
+            />
+            <ProtectedRoute
+              exact
+              path="/current-garden"
+              component={GardenComplete}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
