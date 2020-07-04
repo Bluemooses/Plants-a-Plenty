@@ -6,12 +6,15 @@ class GardenComplete extends Component {
   carrot = this.props.state.seedCount.carrot;
   lettuce = this.props.state.seedCount.lettuce;
   bellPepper = this.props.state.seedCount.bellPepper;
-  bean = this.props.state.seedCount.beans;
+  beans = this.props.state.seedCount.beans;
   pea = this.props.state.seedCount.peas;
   corn = this.props.state.seedCount.corn;
 
   componentDidMount() {
     console.log(this.props.state);
+    console.log(this.beans);
+    console.log(this.props.state.seedCount.beans);
+    console.log(this.beans);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,7 +26,7 @@ class GardenComplete extends Component {
     return (
       <div>
         {/* HEADERS */}
-        <h2>Garden Created</h2>
+        <h2>Garden Created!</h2>
         <h3>Dimensions</h3>
 
         {/* VEGETABLES CHOSEN AND THEIR AMOUNTS */}
@@ -46,30 +49,23 @@ class GardenComplete extends Component {
           {this.props.state.veggies.map((veggie) => {
             return (
               <ul>
-                <li>
-                  Spacing for {veggie.veggie_name}: {veggie.seed_spacing}
-                </li>
-                <li>
-                  Row Space for {veggie.veggie_name}: {veggie.row_spacing}
-                </li>
+                <label for="li" className="gardenLabel">
+                  {" "}
+                  {veggie.veggie_name}
+                </label>
+                <li>column spacing: {veggie.seed_spacing} in.</li>
+                <li>row spacing: {veggie.row_spacing} in.</li>
+                <li>sq. footage: {(veggie.sq_in_per_seed / 144).toFixed(2)}</li>
+                <li>sq inches: {veggie.sq_in_per_seed}</li>
               </ul>
             );
           })}
         </section>
 
-        {/*LIST OF VEGETABLE YIELDS */}
-        <section className="yieldList">
-          <label className="gardenLabel">Vegetable Yields</label>
-          {this.props.state.veggies.map((veggie) => {
-            return (
-              <ul>
-                <li>
-                  Yields per plant {veggie.veggie_name}:{" "}
-                  {veggie.yield}{" "}
-                </li>
-              </ul>
-            );
-          })}
+        {/* LIST OF MATERIALS */}
+        <section className="materialList">
+          <label className="gardenLabel">Materials required</label>
+          {/* Materials needed: {this.props.state.} */}
         </section>
       </div>
     );
@@ -83,3 +79,18 @@ export default connect(mapStateToProps)(GardenComplete);
 
 //wipe all at same id.
 //re insert into it
+
+// {
+//   /* LIST OF VEGETABLE YIELDS
+// <section className="yieldList">
+//   <label className="gardenLabel">Vegetable Yields</label>
+//   {this.props.state.veggies.map((veggie) => {
+//     return (
+//       <ul>
+//         <li>
+//           Yields per plant {veggie.veggie_name}: {veggie.yield}{" "}
+//         </li>
+//       </ul>
+//     );
+//   })} */
+// }
