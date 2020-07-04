@@ -18,9 +18,6 @@ class GardenBed extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps);
-
-    // console.log(nextProps.state.seedCount);
     this.setState({
       seedCount: nextProps.state.seedCount,
     });
@@ -33,6 +30,10 @@ class GardenBed extends Component {
       payload: this.state.seedCount,
     });
     console.log(props);
+    this.props.dispatch({
+      type: "POST_MATERIALS",
+      payload: this.props.state.materials,
+    });
     this.props.history.push("/current-garden");
   };
 

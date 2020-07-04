@@ -2,24 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import VeggieButton from "../VeggieButton/VeggieButton";
 import GardenBed from "../GardenBed/GardenBed";
+import InputForm from "../InputForm/InputForm";
 
-class DescriptionCard extends Component {
-  state = {
-    veggies: this.props.state.veggies,
-  };
-  //pass a function click (id) {    }
+function DescriptionCard() {
+  // state = {
+  //   veggies: this.props.state.veggies,
+  // };
 
-  //inside onClick
-  // onClick(id) => {
-
-  // }
-
-  // // veggies.filter(veg => veg.id === id){
-  //    console.log(veg.description);
-
-  render() {
+  {
     return (
       <div>
+        {InputForm()}
         <VeggieButton />
         <GardenBed />
       </div>

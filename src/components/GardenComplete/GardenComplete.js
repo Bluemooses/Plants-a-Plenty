@@ -11,25 +11,23 @@ class GardenComplete extends Component {
   corn = this.props.state.seedCount.corn;
   material = this.props.state.materials;
 
-  componentDidMount() {
-    console.log(this.props.state);
-    console.log(this.beans);
-    console.log(this.props.state.seedCount.beans);
-    console.log(this.beans);
-    console.log(this.props.state.materials);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    console.log(nextProps.state.seedCount);
-  }
-
   render() {
     return (
       <div>
         {/* HEADERS */}
         <h2>Garden Created!</h2>
-        <h3>Dimensions</h3>
+
+        {/* LIST OF MATERIALS NEEDED */}
+        <section className="gardenList">
+          <label for="li" className="gardenLabel">
+            Materials
+          </label>
+          <li>Square Footage: {this.material.sqFt}</li>
+          <li>Soil required: {this.material.soilCuYd}</li>
+          <li>Wood height: {this.material.height}</li>
+          <li>Side Board Length: {this.material.length}</li>
+          <li>End Board Length: {this.material.width}</li>
+        </section>
 
         {/* VEGETABLES CHOSEN AND THEIR AMOUNTS */}
         <section className="gardenList">
@@ -45,9 +43,10 @@ class GardenComplete extends Component {
         </section>
 
         {/* PROVIDE INFO FROM REDUCER ABOUT VEGETABLE SPACING */}
-        <label className="gardenLabel">Vegetable Spacing</label>
 
         <section className="gardenList">
+          <label className="gardenLabel">Vegetable Spacing</label>
+
           {this.props.state.veggies.map((veggie) => {
             return (
               <ul>
@@ -62,14 +61,6 @@ class GardenComplete extends Component {
               </ul>
             );
           })}
-        </section>
-
-        {/* LIST OF MATERIALS */}
-        <section className="materialList">
-          <li>Soil required: {this.material.soilCuYd}</li>
-          <li>Wood height: {this.material.height}</li>
-          <li>Side Board Length: {this.material.length}</li>
-          <li>End Board Length: {this.material.width}</li>
         </section>
       </div>
     );

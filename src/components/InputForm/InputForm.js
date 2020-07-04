@@ -28,6 +28,10 @@ function InputForm(props) {
     soilCuYd: cuYards,
   };
 
+  // useEffect(() => {
+  //   console.log("just updated");
+  //   return () => dispatch({ type: "POST_MATERIALS", payload: dataObject });
+  // });
   return (
     <div>
       <Input
@@ -59,6 +63,11 @@ function InputForm(props) {
           setHeight(event.target.value);
         }}
       />
+      <section>
+        <p value={0}>Cubic Feet: {cuFt}</p>
+        <p>Square Feet: {sqFt}</p>
+        <p>Dirt Required: {cuYards} cu. Yards</p>
+      </section>
       <button
         onClick={() => {
           dispatch({ type: "POST_MATERIALS", payload: dataObject });
@@ -67,11 +76,6 @@ function InputForm(props) {
       >
         Submit Dimensions
       </button>
-      <section>
-        <p value={0}>Cubic Feet: {cuFt}</p>
-        <p>Square Feet: {sqFt}</p>
-        <p>Dirt Required: {cuYards} cu. Yards</p>
-      </section>
     </div>
   );
 }
