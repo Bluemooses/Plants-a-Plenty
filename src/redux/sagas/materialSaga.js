@@ -27,7 +27,7 @@ function* postMaterials(action) {
       withCredentials: true,
     };
     yield axios.post(`/api/materials`, action.payload, config);
-    yield put({ type: "GET_MATERIALS" });
+    // yield put({ type: "GET_MATERIALS" });
   } catch (error) {
     console.log("Post err", error);
   }

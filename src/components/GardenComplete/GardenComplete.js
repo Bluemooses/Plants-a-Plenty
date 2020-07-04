@@ -9,12 +9,14 @@ class GardenComplete extends Component {
   beans = this.props.state.seedCount.beans;
   pea = this.props.state.seedCount.peas;
   corn = this.props.state.seedCount.corn;
+  material = this.props.state.materials;
 
   componentDidMount() {
     console.log(this.props.state);
     console.log(this.beans);
     console.log(this.props.state.seedCount.beans);
     console.log(this.beans);
+    console.log(this.props.state.materials);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -64,8 +66,10 @@ class GardenComplete extends Component {
 
         {/* LIST OF MATERIALS */}
         <section className="materialList">
-          <label className="gardenLabel">Materials required</label>
-          {/* Materials needed: {this.props.state.} */}
+          <li>Soil required: {this.material.soilCuYd}</li>
+          <li>Wood height: {this.material.height}</li>
+          <li>Side Board Length: {this.material.length}</li>
+          <li>End Board Length: {this.material.width}</li>
         </section>
       </div>
     );
