@@ -13,8 +13,8 @@ router.get("/", (req, res) => {});
  */
 
 router.post("/", (req, res) => {
-  console.log(req.body);
-  console.log(req.body.carrot);
+  // console.log(req.body);
+  // console.log(req.body.carrot);
   values = [
     req.body.carrot,
     req.body.bellPepper,

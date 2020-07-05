@@ -21,13 +21,14 @@ function* getMaterials() {
 }
 
 function* postMaterials(action) {
+  console.log(action.payload);
   try {
     const config = {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
     yield axios.post(`/api/materials`, action.payload, config);
-    // yield put({ type: "GET_MATERIALS" });
+    yield put({ type: "SET_MATERIALS", payload: action.payload });
   } catch (error) {
     console.log("Post err", error);
   }

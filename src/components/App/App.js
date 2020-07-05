@@ -16,13 +16,13 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
-import GardenBed from "../DescriptionCard/DescriptionCard";
+import GardenBed from "../GardenBed/GardenBed";
 import UserGardens from "../UserGardens/UserGardens";
 import EditPage from "../EditPage/EditPage";
 
 import "./App.css";
-import DescriptionCard from "../DescriptionCard/DescriptionCard";
 import GardenComplete from "../GardenComplete/GardenComplete";
+import UserEntryPage from "../UserEntryPage/UserEntryPage";
 
 class App extends Component {
   componentDidMount() {
@@ -58,7 +58,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/my-gardens"
-              component={DescriptionCard}
+              component={UserEntryPage}
             />
             <ProtectedRoute
               exact

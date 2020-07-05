@@ -4,15 +4,15 @@ import VeggieButton from "../VeggieButton/VeggieButton";
 import GardenBed from "../GardenBed/GardenBed";
 import InputForm from "../InputForm/InputForm";
 
-function DescriptionCard() {
+function DescriptionCard(props) {
   // state = {
   //   veggies: this.props.state.veggies,
   // };
-
+  console.log(props.state);
   {
     return (
       <div>
-        {InputForm()}
+        {InputForm(props.state)}
         <VeggieButton />
         <GardenBed />
       </div>

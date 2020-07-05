@@ -19,13 +19,13 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/dimensions">
-            Start Here
+          <Link className="nav-link" to="/my-gardens">
+            Create Garden
+          </Link>
+          <Link className="nav-link" to="/current-garden">
+            Current Garden
           </Link>
           <Link className="nav-link" to="/create-garden">
-            Add veggies
-          </Link>
-          <Link className="nav-link" to="/my-gardens">
             My Gardens
           </Link>
         </>

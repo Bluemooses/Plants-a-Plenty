@@ -2,21 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Input } from "@material-ui/core";
 import "./InputForm.css";
-import { Redirect, useHistory } from "react-router-dom";
-import { push } from "connected-react-router";
 
 function InputForm(props) {
+  // DEFINE CONSTS
   const [length, setLength] = useState(0);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const dispatch = useDispatch();
-  const history = useHistory();
 
+  // DEFINE LOGIC FOR PAYLOAD OBJECT
   let cuFt = Number((length * width * height).toFixed(2));
   let sqFt = Number((length * width).toFixed(2));
   let cuInches = Number((cuFt * 1728).toFixed(2));
   let sqInches = Number((sqFt * 144).toFixed(2));
   let cuYards = Number((cuFt / 27).toFixed(2));
+
+  // KEEP TRACK OF THIS OBJECT, && DISPATCH TO REDUCER.
   let dataObject = {
     cuFt: cuFt,
     sqFt: sqFt,
@@ -28,12 +29,9 @@ function InputForm(props) {
     soilCuYd: cuYards,
   };
 
-  // useEffect(() => {
-  //   console.log("just updated");
-  //   return () => dispatch({ type: "POST_MATERIALS", payload: dataObject });
-  // });
   return (
     <div>
+      {/* INPUT COLLECTOR */}
       <Input
         className="gardenIn"
         autoFocus={true}
@@ -45,6 +43,7 @@ function InputForm(props) {
           setLength(event.target.value);
         }}
       />
+      {/* INPUT COLLECTOR */}
       <Input
         className="gardenIn"
         variant="outlined"
@@ -54,6 +53,7 @@ function InputForm(props) {
           setWidth(event.target.value);
         }}
       />
+      {/* INPUT COLLECTOR */}
       <Input
         className="gardenIn"
         variant="outlined"
@@ -63,15 +63,17 @@ function InputForm(props) {
           setHeight(event.target.value);
         }}
       />
+      {/* SHOW DATA ON DOM */}
       <section>
         <p value={0}>Cubic Feet: {cuFt}</p>
         <p>Square Feet: {sqFt}</p>
         <p>Dirt Required: {cuYards} cu. Yards</p>
       </section>
+
+      {/* DISPATCH USER DIMENSIONS */}
       <button
         onClick={() => {
-          dispatch({ type: "POST_MATERIALS", payload: dataObject });
-          history.push("/create-garden");
+          dispatch({ type: "SET_MATERIALS", payload: dataObject });
         }}
       >
         Submit Dimensions
