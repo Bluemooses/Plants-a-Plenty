@@ -6,7 +6,6 @@ class GardenBed extends Component {
   state = {
     veggies: {},
     seedCount: {},
-    gardenBedId: this.props.state.user.id,
   };
 
   componentDidMount() {
@@ -28,17 +27,16 @@ class GardenBed extends Component {
     console.log("click");
     this.props.dispatch({
       type: "CREATE_GARDEN_BED",
-      payload: this.state.gardenBedId,
     });
     this.props.dispatch({
       type: "POST_VEGGIE_COUNTS",
       payload: this.state.seedCount,
     });
     // console.log(props);
-    // this.props.dispatch({
-    //   type: "POST_MATERIALS",
-    //   payload: this.props.state.materials,
-    // });
+    this.props.dispatch({
+      type: "POST_MATERIALS",
+      payload: this.props.state.materials,
+    });
 
     this.props.history.push("/current-garden");
   };

@@ -6,7 +6,7 @@ const router = express.Router();
  * GET SEED COUNT FOR SPECIFIC GARDEN BED
  */
 
-router.get("/", (req, res) => {
+router.get(`/:`, (req, res) => {
   let queryText = pool.query(queryText);
 });
 
