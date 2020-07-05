@@ -24,11 +24,10 @@ router.post("/", (req, res) => {
     req.body.peas,
     req.body.beans,
     req.body.lettuce,
-    req.body.gardenBedId
+    req.body.gardenBedId,
   ];
 
   const queryText = `INSERT INTO "Seeds" ("carrot_seeds", "bell_pepper_seeds", "corn_seeds", "pea_seeds", "greenbean_seeds", "lettuce_seeds", "garden_bed_id") VALUES ($1, $2, $3, $4, $5, $6, $7);`;
-  // const queryText2 = `INSERT INTO GardenBed ("")`
   pool
     .query(queryText, values)
     .then((result) => {
