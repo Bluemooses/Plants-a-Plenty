@@ -17,6 +17,7 @@ class VeggieButton extends Component {
         {this.props.vegImages.map((veggie) => {
           let payload = {
             type: veggie.type,
+            img: veggie.img
           }; //this is what we want to keep track of;
 
           return (

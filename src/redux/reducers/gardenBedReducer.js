@@ -1,16 +1,10 @@
 // No negative veggies please.
-const vegetableButtonCountReducer = (
-  state = { carrot: 0, bellPepper: 0, corn: 0, peas: 0, beans: 0, lettuce: 0 },
-  action
-) => {
-  console.log(action.payload);
-
+const vegetableButtonCountReducer = (state = [], action) => {
   switch (action.type) {
     case "VEGGIE_CLICKED":
       switch (action.payload.type) {
         case "Carrot":
-          return { ...state, carrot: state.carrot + 1 };
-
+          return [...state, action.carrot];
         case "Bell Pepper":
           return { ...state, bellPepper: state.bellPepper + 1 };
 

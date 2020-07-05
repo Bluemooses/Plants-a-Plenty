@@ -1,11 +1,6 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
 CREATE TABLE "user" (
 	"id" serial NOT NULL,
-	"username" varchar(255) NOT NULL UNIQUE,
+	"username" varchar(80) NOT NULL UNIQUE,
 	"password" varchar(1000) NOT NULL,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")
 ) WITH (
@@ -15,14 +10,15 @@ CREATE TABLE "user" (
 
 
 CREATE TABLE "Veggies" (
-	"ID" integer NOT NULL,
-	"seed_spacing" integer NOT NULL,
+	"ID" serial NOT NULL,
+	"spacing" integer NOT NULL,
 	"yield" integer NOT NULL,
 	"img" varchar(255) NOT NULL,
 	"description" varchar(255) NOT NULL,
 	"timing" varchar(255) NOT NULL,
 	"veggie_name" varchar(255) NOT NULL,
 	"row_spacing" integer NOT NULL,
+	"sq_in_per_seed" integer NOT NULL,
 	CONSTRAINT "Veggies_pk" PRIMARY KEY ("ID")
 ) WITH (
   OIDS=FALSE
@@ -36,7 +32,7 @@ CREATE TABLE "GardenBed" (
 	"sq_ft" serial NOT NULL,
 	"sq_in" serial NOT NULL,
 	"total_yield" serial NOT NULL,
-	"user_id" integer NOT NULL,
+	"user_id" serial NOT NULL,
 	CONSTRAINT "GardenBed_pk" PRIMARY KEY ("ID")
 ) WITH (
   OIDS=FALSE
@@ -62,7 +58,9 @@ CREATE TABLE "Materials" (
 	"wood_width" integer NOT NULL,
 	"hammer" BOOLEAN NOT NULL,
 	"screws" BOOLEAN NOT NULL,
-	"soil-cuYd" integer NOT NULL,
+	"soil" integer NOT NULL,
+	"seeds" integer NOT NULL,
+	"garden_bed_id" integer NOT NULL UNIQUE,
 	CONSTRAINT "Materials_pk" PRIMARY KEY ("ID")
 ) WITH (
   OIDS=FALSE
@@ -71,7 +69,7 @@ CREATE TABLE "Materials" (
 
 
 CREATE TABLE "Seeds" (
-	"ID" integer NOT NULL,
+	"ID" serial NOT NULL,
 	"beet_seeds" integer NOT NULL,
 	"bell_pepper_seeds" integer NOT NULL,
 	"carrot_seeds" integer NOT NULL,
@@ -88,29 +86,8 @@ CREATE TABLE "Seeds" (
 	"pea_seeds" integer NOT NULL,
 	"summer_squash_seeds" integer NOT NULL,
 	"winter_squash_seeds" integer NOT NULL,
+	"garden_bed_id" integer NOT NULL UNIQUE,
 	CONSTRAINT "Seeds_pk" PRIMARY KEY ("ID")
-) WITH (
-  OIDS=FALSE
-);
-
-
-
-CREATE TABLE "UserGarden" (
-	"GardenBed_Materials" integer NOT NULL,
-	"garden_bed_id" integer NOT NULL,
-	"materials_id" integer NOT NULL,
-	CONSTRAINT "UserGarden_pk" PRIMARY KEY ("GardenBed_Materials")
-) WITH (
-  OIDS=FALSE
-);
-
-
-
-CREATE TABLE "GardenBed_Seeds" (
-	"seeds_id" integer NOT NULL,
-	"garden_bed_id" integer NOT NULL,
-	"ID" serial NOT NULL,
-	CONSTRAINT "GardenBed_Seeds_pk" PRIMARY KEY ("ID")
 ) WITH (
   OIDS=FALSE
 );
@@ -124,12 +101,6 @@ ALTER TABLE "GardenBed" ADD CONSTRAINT "GardenBed_fk0" FOREIGN KEY ("user_id") R
 ALTER TABLE "GardenBed_Veggies" ADD CONSTRAINT "GardenBed_Veggies_fk0" FOREIGN KEY ("veggies_id") REFERENCES "Veggies"("ID");
 ALTER TABLE "GardenBed_Veggies" ADD CONSTRAINT "GardenBed_Veggies_fk1" FOREIGN KEY ("GardenBed_id") REFERENCES "GardenBed"("ID");
 
+ALTER TABLE "Materials" ADD CONSTRAINT "Materials_fk0" FOREIGN KEY ("garden_bed_id") REFERENCES "GardenBed"("ID");
 
-
-ALTER TABLE "UserGarden" ADD CONSTRAINT "UserGarden_fk0" FOREIGN KEY ("garden_bed_id") REFERENCES "GardenBed"("ID");
-ALTER TABLE "UserGarden" ADD CONSTRAINT "UserGarden_fk1" FOREIGN KEY ("materials_id") REFERENCES "Materials"("ID");
-
-ALTER TABLE "GardenBed_Seeds" ADD CONSTRAINT "GardenBed_Seeds_fk0" FOREIGN KEY ("seeds_id") REFERENCES "Seeds"("ID");
-ALTER TABLE "GardenBed_Seeds" ADD CONSTRAINT "GardenBed_Seeds_fk1" FOREIGN KEY ("garden_bed_id") REFERENCES "GardenBed"("ID");
-
-SELECT * FROM "Veggies";
+ALTER TABLE "Seeds" ADD CONSTRAINT "Seeds_fk0" FOREIGN KEY ("garden_bed_id") REFERENCES "GardenBed"("ID");

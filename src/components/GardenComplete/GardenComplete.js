@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./GardenComplete.css";
-
+import carrotImg from "../../images/carrot.png";
+import bellPepperImg from "../../images/bell-pepper.png";
+import lettuceImg from "../../images/lettuce.png";
+import beansImg from "../../images/beans.png";
+import peasImg from "../../images/peas.png";
+import cornImg from "../../images/corn.png";
 class GardenComplete extends Component {
   carrot = this.props.state.seedCount.carrot;
   lettuce = this.props.state.seedCount.lettuce;
@@ -11,6 +16,10 @@ class GardenComplete extends Component {
   corn = this.props.state.seedCount.corn;
   material = this.props.state.materials;
 
+  componentDidMount() {
+    console.log(this.props.state.vegImages);
+    console.log(this.carrotImg);
+  }
   render() {
     return (
       <div>
@@ -22,9 +31,11 @@ class GardenComplete extends Component {
           <label for="li" className="gardenLabel">
             Materials
           </label>
-          <li>Square Footage: {this.material.sqFt}</li>
-          <li>Soil required: {this.material.soilCuYd}</li>
-          <li>Wood height: {this.material.height}</li>
+          <li>Square Footage: {this.material.sqFt} sqFt.</li>
+          <li>Soil required: {this.material.soilCuYd} cuYd.</li>
+          <li>
+            Wood height: {Number(this.material.height / 12).toFixed(2)} in.
+          </li>
           <li>Side Board Length: {this.material.length}</li>
           <li>End Board Length: {this.material.width}</li>
         </section>
@@ -54,13 +65,17 @@ class GardenComplete extends Component {
                   {" "}
                   {veggie.veggie_name}
                 </label>
-                <li>column spacing: {veggie.seed_spacing} in.</li>
-                <li>row spacing: {veggie.row_spacing} in.</li>
-                <li>sq. footage: {(veggie.sq_in_per_seed / 144).toFixed(2)}</li>
-                <li>sq inches: {veggie.sq_in_per_seed}</li>
+                <li>Column spacing: {veggie.seed_spacing} in.</li>
+                <li>Row spacing: {veggie.row_spacing} in.</li>
+                <li>Sq. footage: {(veggie.sq_in_per_seed / 144).toFixed(2)}</li>
+                <li>Sq inches: {veggie.sq_in_per_seed}</li>
               </ul>
             );
           })}
+        </section>
+
+        <section className="gardenImages">
+          <img src={cornImg}></img>
         </section>
       </div>
     );
@@ -71,21 +86,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(GardenComplete);
-
-//wipe all at same id.
-//re insert into it
-
-// {
-//   /* LIST OF VEGETABLE YIELDS
-// <section className="yieldList">
-//   <label className="gardenLabel">Vegetable Yields</label>
-//   {this.props.state.veggies.map((veggie) => {
-//     return (
-//       <ul>
-//         <li>
-//           Yields per plant {veggie.veggie_name}: {veggie.yield}{" "}
-//         </li>
-//       </ul>
-//     );
-//   })} */
-// }

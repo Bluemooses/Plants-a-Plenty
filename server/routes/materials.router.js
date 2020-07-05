@@ -23,56 +23,65 @@ router.get("/", (req, res) => {
  */
 
 //  make this async
-// router.post("/", (req, res) => {
-//   values = [
-//     req.body.sqFt,
-//     req.body.width,
-//     req.body.length,
-//     req.body.height,
-//     req.body.hammer,
-//     req.body.screws,
-//     req.body.soilCuYd,
-//   ];
+router.post("/", (req, res) => {
+  values = [
+    req.body.carrot,
+    req.body.bellPepper,
+    req.body.corn,
+    req.body.peas,
+    req.body.beans,
+    req.body.lettuce,
+  ];
 
-//   queryText = `INSERT INTO "Materials" ("sqFt", "wood_width", "wood_length", "wood_height", "screws", "drill", "cuYd") VALUES ($1, $2, $3, $4, $5, $6, $7);`;
-//   console.log(values);
+  const queryText = `INSERT INTO "Seeds" ("carrot_seeds", "bell_pepper_seeds", "corn_seeds", "pea_seeds", "greenbean_seeds", "lettuce_seeds") VALUES ($1, $2, $3, $4, $5, $6);`;
 
-//   pool
-//     .query(queryText, values)
-//     .then((result) => {
-//       res.sendStatus(201);
-//     })
-//     .catch((error) => {
-//       console.log("axios POST err", error);
-//     });
+  pool
+    .query(queryText, values)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log("axios POST err", error);
+    });
+});
+
+// router.post("/", async (req, res) => {
+//   // console.log(req.body);
+
+//   const connection = await pool.connect();
+//   const user = req.user.id;
+
+//   try {
+//     await connection.query("BEGIN");
+
+//     const queryText1 =
+//       (`INSERT INTO "Seeds" ("carrot_seeds", "bell_pepper_seeds", "corn_seeds", "pea_seeds", "greenbean_seeds", "lettuce_seeds") VALUES ($1, $2, $3, $4, $5, $6)
+//     RETURNING id;`,
+//       [
+//         carrot_seeds,
+//         bell_pepper_seeds,
+//         corn_seeds,
+//         pea_seeds,
+//         greenbean_seeds,
+//         lettuce_seeds,
+//       ]);
+//     const seedsID = queryText1.row[0].id;
+
+//     const queryText2 = `INSERT INTO "Materials" ("sqFt", "wood_width", "wood_length", "wood_height", "screws", "drill", "cuYd") VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+//   } catch (error) {
+//     console.log("SERVER POST ERR", error);
+//     res.sendStatus(500);
+//   }
 // });
 
-// values = [
-//   req.body.carrot,
-//   req.body.bellPepper,
-//   req.body.corn,
-//   req.body.peas,
-//   req.body.beans,
-//   req.body.lettuce,
-// ];
-
-// queryText = `INSERT INTO "Seeds" ("carrot_seeds", "bell_pepper_seeds", "corn_seeds", "pea_seeds", "greenbean_seeds", "lettuce_seeds") VALUES ($1, $2, $3, $4, $5, $6);`;
-
-router.post("/", async (req, res) => {
-  // console.log(req.body);
-
-  const connection = await pool.connect();
-  const user = req.user.id;
-  // console.log(user);
-  // console.log(req.body);
-  // console.log(req.user);
-  try {
-    await connection.query("BEGIN");
-    console.log(req.body);
-  } catch (error) {
-    console.log("SERVER POST ERR", error);
-    res.sendStatus(500);
-  }
-});
+//  values = [
+//    req.body.sqFt,
+//    req.body.width,
+//    req.body.length,
+//    req.body.height,
+//    req.body.hammer,
+//    req.body.screws,
+//    req.body.soilCuYd,
+//  ];
 
 module.exports = router;
