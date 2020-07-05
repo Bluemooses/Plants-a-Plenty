@@ -18,10 +18,22 @@ router.post("/create-garden", async (req, res, next) => {
   const connection = await pool.connect();
   userID = req.body.payload;
   try {
+    await connection.query("BEGIN");
     //   console.log(next);
-    const queryText = `INSERT INTO "GardenBed" ("name") VALUES ($1) RETURNING "id";`;
+    const sqlAddUserGardenBed = `INSERT INTO "GardenBed" ("name") VALUES ($1) RETURNING "id";`;
+    const result = await connection.query(sqlAddUserGardenBed, [userID]);
+    console.log(result);
+    console.log(result.rows);
+    const gardenId = result.rows[0].id;
+    console.log(gardenId);
+    const sqlEstablishGardenLink = `INSERT INTO "GardenBed_user" ("GardenBed_id", "user_id") VALUES($1, $2) RETURNING "id";`;
+    const established = await connection.query(sqlEstablishGardenLink, [
+      gardenId,
+      userID,
+    ]);
+    completelyLinkedGardenId = established.rows[0].id;
 
-    pool.query(queryText, [userID]);
+    // console.log(result2);
     await connection.query("COMMIT");
     console.log("HYPE");
     res.sendStatus(201);
