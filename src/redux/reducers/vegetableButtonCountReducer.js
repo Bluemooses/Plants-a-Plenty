@@ -1,6 +1,14 @@
 // No negative veggies please.
 const vegetableButtonCountReducer = (
-  state = { carrot: 0, bellPepper: 0, corn: 0, peas: 0, beans: 0, lettuce: 0 },
+  state = {
+    carrot: 0,
+    bellPepper: 0,
+    corn: 0,
+    peas: 0,
+    beans: 0,
+    lettuce: 0,
+    
+  },
   action
 ) => {
   console.log(action.payload);
