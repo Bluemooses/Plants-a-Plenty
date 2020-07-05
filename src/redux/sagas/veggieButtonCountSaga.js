@@ -14,7 +14,7 @@ function* postVeggieCount(action) {
       withCredentials: true,
     };
     console.log(action.payload);
-    yield axios.post(`/api/seeds`, action.payload, config);
+    yield axios.post(`/api/garden/create-garden`, action.payload, config);
     yield put({ type: "SET_USER_SEEDS", payload: action.payload });
   } catch (error) {
     console.log("Post err", error);

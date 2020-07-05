@@ -30,10 +30,10 @@ class GardenBed extends Component {
       type: "CREATE_GARDEN_BED",
       payload: this.state.gardenBedId,
     });
-    // this.props.dispatch({
-    //   type: "POST_VEGGIE_COUNTS",
-    //   payload: this.state.seedCount,
-    // });
+    this.props.dispatch({
+      type: "POST_VEGGIE_COUNTS",
+      payload: this.state.seedCount,
+    });
     // console.log(props);
     // this.props.dispatch({
     //   type: "POST_MATERIALS",
