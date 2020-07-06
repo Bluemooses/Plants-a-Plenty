@@ -25,18 +25,24 @@ class GardenBed extends Component {
 
   addVeggie = (props) => {
     console.log("click");
+    let payload = {
+      seedCount: this.state.seedCount,
+      materials: this.props.state.materials,
+    };
+    console.log("EASIER TO SEE", this.payload);
     this.props.dispatch({
       type: "CREATE_GARDEN_BED",
+      payload: payload,
     });
-    this.props.dispatch({
-      type: "POST_VEGGIE_COUNTS",
-      payload: this.state.seedCount,
-    });
-    // console.log(props);
-    this.props.dispatch({
-      type: "POST_MATERIALS",
-      payload: this.props.state.materials,
-    });
+    // this.props.dispatch({
+    //   type: "POST_VEGGIE_COUNTS",
+    //   payload: this.state.seedCount,
+    // });
+    // // console.log(props);
+    // this.props.dispatch({
+    //   type: "POST_MATERIALS",
+    //   payload: this.props.state.materials,
+    // });
 
     this.props.history.push("/current-garden");
   };

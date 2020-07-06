@@ -13,12 +13,12 @@ function* getGardenBed() {
     // allow the server session to recognize the user
     // If a user is logged in, this will return their information
     // from the server session (req.user)
-    const response = yield axios.get("/api/user", config);
+    const response = yield axios.get("/api/garden", config);
+    yield put({ type: "SET_GARDENS", payload: response.data });
 
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
-    yield put({ type: "SET_GARDEN_ID", payload: response.data });
   } catch (error) {
     console.log("User get request failed", error);
   }
@@ -26,7 +26,9 @@ function* getGardenBed() {
 
 function* createGardenBed(action) {
   try {
-    yield axios.post(`/api/garden/create-garden`, { payload: action.payload });
+    console.log("ACTION PAYLOAD FROM CREATEGARDEN", action.payload);
+    yield axios.post(`/api/garden/create-garden`, action.payload);
+    yield put({ type: "GET_GARDEN_BEDS" });
   } catch (error) {
     console.log("ERROR IN GARDEN BED POST", error);
   }
@@ -34,6 +36,7 @@ function* createGardenBed(action) {
 
 function* userSaga() {
   yield takeLatest("CREATE_GARDEN_BED", createGardenBed);
+  yield takeLatest("GET_GARDEN_BEDS", getGardenBed);
 }
 
 export default userSaga;

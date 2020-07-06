@@ -5,7 +5,21 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+  queryUserGardens = `SELECT "GardenBed".*, "Materials".*, "Seeds".* FROM "GardenBed"
+JOIN "user" ON "user"."id" = "GardenBed"."user_id"
+JOIN "Materials" ON "GardenBed"."id" = "Materials"."garden_bed_id"
+JOIN "Seeds" ON "GardenBed"."id" = "Seeds"."garden_bed_id"`;
+
+  pool
+    .query(queryUserGardens)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      res.sendStatus(500);
+    });
+});
 
 /**
  * POST route template
@@ -15,7 +29,7 @@ router.post("/create-garden", async (req, res, next) => {
   // console.log(req.user.id);
   const connection = await pool.connect();
   try {
-    console.log(req.body);
+    console.log(req.user.id);
     userID = req.user.id;
 
     await connection.query("BEGIN");
@@ -28,15 +42,16 @@ router.post("/create-garden", async (req, res, next) => {
 
     // CREATE LINK BETWEEN GARDEN BED AND USER
     const gardenId = result.rows[0].id;
+    console.log(req.body.seedCount.carrot);
 
     values = [
-      req.body.sqFt,
-      req.body.width,
-      req.body.length,
-      req.body.height,
-      req.body.hammer,
-      req.body.screws,
-      req.body.soilCuYd,
+      req.body.materials.sqFt,
+      req.body.materials.width,
+      req.body.materials.length,
+      req.body.materials.height,
+      req.body.materials.hammer,
+      req.body.materials.screws,
+      req.body.materials.soilCuYd,
       gardenId,
     ];
 
@@ -53,12 +68,12 @@ router.post("/create-garden", async (req, res, next) => {
     ]);
 
     seedValues = [
-      req.body.carrot,
-      req.body.bellPepper,
-      req.body.corn,
-      req.body.peas,
-      req.body.beans,
-      req.body.lettuce,
+      req.body.seedCount.carrot,
+      req.body.seedCount.bellPepper,
+      req.body.seedCount.corn,
+      req.body.seedCount.peas,
+        req.body.seedCount.beans,
+        req.body.seedCount.lettuce,
       gardenId,
     ];
 
@@ -72,6 +87,7 @@ router.post("/create-garden", async (req, res, next) => {
       seedValues[5],
       seedValues[6],
     ]);
+    console.log(req.body);
 
     await connection.query("COMMIT");
     console.log("Success!");

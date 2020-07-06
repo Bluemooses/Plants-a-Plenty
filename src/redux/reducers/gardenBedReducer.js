@@ -1,6 +1,6 @@
 const gardenBedReducer = (state = {}, action) => {
   switch (action.type) {
-    case "SET_GARDEN_ID":
+    case "SET_GARDENS":
       return action.payload;
     case "UNSET_GARDEN_ID":
       return {};
