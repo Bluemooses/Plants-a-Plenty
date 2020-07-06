@@ -5,19 +5,10 @@ import { withRouter, Link } from "react-router-dom";
 class AllGardens extends Component {
   componentDidMount() {
     const [latestGarden] = this.props.state.gardenBedReducer.slice(-1);
-    console.log(latestGarden);
-    console.log(this.props.state.gardenBedReducer);
-  }
-
-  componentWillUnmount() {
-    this.props.dispatch({
-      type: "GET_GARDEN_BEDS",
-    });
+    this.forceUpdate();
   }
 
   goToGarden = (gardenbed) => {
-    console.log(gardenbed);
-    console.log(gardenbed.id);
     this.props.dispatch({
       type: "GET_THIS_GARDEN_BED",
       payload: gardenbed.id,
