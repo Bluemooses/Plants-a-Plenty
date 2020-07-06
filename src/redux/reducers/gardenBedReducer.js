@@ -1,4 +1,4 @@
-const gardenBedReducer = (state = {}, action) => {
+const gardenBedReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_GARDENS":
       return action.payload;

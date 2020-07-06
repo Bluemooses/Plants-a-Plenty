@@ -10,8 +10,6 @@ const passport = require("./strategies/user.strategy");
 // Route includes
 const userRouter = require("./routes/user.router");
 const veggieRouter = require("./routes/veggies-table.router");
-const materialRouter = require("./routes/materials.router");
-const seedsRouter = require("./routes/seed.router");
 const gardenRouter = require("./routes/garden.router");
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,8 +25,6 @@ app.use(passport.session());
 /* Routes */
 app.use("/api/user", userRouter);
 app.use(`/api/veggies`, veggieRouter);
-app.use(`/api/materials`, materialRouter);
-app.use(`/api/seeds`, seedsRouter);
 app.use(`/api/garden`, gardenRouter);
 // Serve static files
 app.use(express.static("build"));

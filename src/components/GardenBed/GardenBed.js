@@ -10,6 +10,10 @@ class GardenBed extends Component {
 
   componentDidMount() {
     console.log(this.props.history);
+    console.log("GARDEN BEDS ARE", this.props.state.gardenBedReducer);
+    console.log("LAST GARDEN IS");
+    const [latestGarden] = this.props.state.gardenBedReducer.slice(-1);
+    console.log(latestGarden);
 
     this.setState({
       veggies: this.props.state.veggies,

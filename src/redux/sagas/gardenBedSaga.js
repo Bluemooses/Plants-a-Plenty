@@ -20,7 +20,7 @@ function* getGardenBed() {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
   } catch (error) {
-    console.log("User get request failed", error);
+    console.log("GET GARDEN CLIENT FAIL", error);
   }
 }
 
@@ -30,13 +30,28 @@ function* createGardenBed(action) {
     yield axios.post(`/api/garden/create-garden`, action.payload);
     yield put({ type: "GET_GARDEN_BEDS" });
   } catch (error) {
-    console.log("ERROR IN GARDEN BED POST", error);
+    console.log("ERROR IN GARDEN BED CLIENT POST", error);
+  }
+}
+
+function* getThisGardenBed(action) {
+  console.log(action.payload);
+
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    const response = yield axios.get(`/api/garden/${action.payload}`);
+  } catch (error) {
+    console.log("GARDEN BED ID CLIENT GET ERROR", error);
   }
 }
 
 function* userSaga() {
   yield takeLatest("CREATE_GARDEN_BED", createGardenBed);
   yield takeLatest("GET_GARDEN_BEDS", getGardenBed);
+  yield takeLatest("GET_THIS_GARDEN_BED", getThisGardenBed);
 }
 
 export default userSaga;

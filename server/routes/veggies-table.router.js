@@ -5,18 +5,18 @@ const router = express.Router();
 /**
  * GET route template
  */
-// router.get("/", (req, res) => {
-//   console.log("GET /api/veggies");
-//   pool
-//     .query(`SELECT * FROM "Veggies";`)
-//     .then((result) => {
-//       res.send(result.rows);
-//     })
-//     .catch((error) => {
-//       console.log("Error in GET Veggies", error);
-//       res.sendStatus(500);
-//     });
-// });
+router.get("/", (req, res) => {
+  console.log("GET /api/veggies");
+  pool
+    .query(`SELECT * FROM "Veggies" ORDER BY "veggie_name" ASC;`)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log("Error in GET Veggies", error);
+      res.sendStatus(500);
+    });
+});
 
 /**
  * POST route template

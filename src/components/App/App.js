@@ -23,15 +23,23 @@ import EditPage from "../EditPage/EditPage";
 import "./App.css";
 import GardenComplete from "../GardenComplete/GardenComplete";
 import UserEntryPage from "../UserEntryPage/UserEntryPage";
+import AllGardens from "../AllGardens/AllGardens";
 
 class App extends Component {
   componentDidMount() {
+    this.loadDb();
+  }
+
+  loadDb = () => {
     this.props.dispatch({ type: "FETCH_USER" });
     this.props.dispatch({ type: "GET_VEGGIES" });
     this.props.dispatch({
       type: "GET_VEGETABLE_BUTTON_PICTURES",
     });
-  }
+    this.props.dispatch({
+      type: "GET_GARDEN_BEDS",
+    });
+  };
 
   render() {
     return (
@@ -53,7 +61,7 @@ class App extends Component {
             they will see the info page instead. */}
             {/* <ProtectedRoute exact path="/info" component={InfoPage} /> */}
             <ProtectedRoute exact path="/dimensions" component={InfoPage} />
-            <ProtectedRoute exact path="/create-garden" component={GardenBed} />
+            <ProtectedRoute exact path="/create-garden" component={AllGardens} />
             <ProtectedRoute exact path="/edit-garden" component={EditPage} />
             <ProtectedRoute
               exact

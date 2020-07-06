@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
- * GET route template
+ * GET ALL GARDENS SPECIFIC TO USER
  */
 router.get("/", (req, res) => {
   queryUserGardens = `SELECT "GardenBed".*, "Materials".*, "Seeds".* FROM "GardenBed"
@@ -22,7 +22,32 @@ JOIN "Seeds" ON "GardenBed"."id" = "Seeds"."garden_bed_id"`;
 });
 
 /**
- * POST route template
+ * GET SPECIFIC USER GARDEN
+ */
+
+router.get(`/:id`, (req, res) => {
+  console.log(req.body)
+  console.log(req.params.id);
+  let id = req.params.id
+  // id = req.body.
+  queryUserGardens = queryUserGardens = `SELECT "GardenBed".*, "Materials".*, "Seeds".* FROM "GardenBed"
+  JOIN "user" ON "user"."id" = "GardenBed"."user_id"
+  JOIN "Materials" ON "GardenBed"."id" = "Materials"."garden_bed_id"
+  JOIN "Seeds" ON "GardenBed"."id" = "Seeds"."garden_bed_id"
+  WHERE "Seeds"."id" = ${id}`;
+
+  pool
+    .query(queryUserGardens)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      res.sendStatus(500);
+    });
+});
+
+/**
+ * POST USER GARDEN INTO DB
  */
 router.post("/create-garden", async (req, res, next) => {
   // console.log(req.body.payload);
@@ -44,7 +69,8 @@ router.post("/create-garden", async (req, res, next) => {
     const gardenId = result.rows[0].id;
     console.log(req.body.seedCount.carrot);
 
-    values = [
+    // DEFINES MATERIALS
+    materialValues = [
       req.body.materials.sqFt,
       req.body.materials.width,
       req.body.materials.length,
@@ -57,23 +83,24 @@ router.post("/create-garden", async (req, res, next) => {
 
     const sqlMaterialQuery = `INSERT INTO "Materials" ("sqFt", "wood_width", "wood_length", "wood_height", "hammer", "screws", "soil", "garden_bed_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
     const result2 = await connection.query(sqlMaterialQuery, [
-      values[0],
-      values[1],
-      values[2],
-      values[3],
-      values[4],
-      values[5],
-      values[6],
-      values[7],
-    ]);
+      materialValues[0],
+      materialValues[1],
+      materialValues[2],
+      materialValues[3],
+      materialValues[4],
+      materialValues[5],
+      materialValues[6],
+      materialValues[7],
+    ]); //END MATERIALS POST
 
+    //DEFINES SEED COUNTS
     seedValues = [
       req.body.seedCount.carrot,
       req.body.seedCount.bellPepper,
       req.body.seedCount.corn,
       req.body.seedCount.peas,
-        req.body.seedCount.beans,
-        req.body.seedCount.lettuce,
+      req.body.seedCount.beans,
+      req.body.seedCount.lettuce,
       gardenId,
     ];
 
@@ -86,17 +113,20 @@ router.post("/create-garden", async (req, res, next) => {
       seedValues[4],
       seedValues[5],
       seedValues[6],
-    ]);
-    console.log(req.body);
+    ]); //ENDS SEEDS POST
 
+    console.log(req.body);
+    //ALL QUERIES SUCCESSFUL, COMMIT CHANGES.
     await connection.query("COMMIT");
     console.log("Success!");
     res.sendStatus(201);
   } catch (error) {
+    //ROLLBACK ANY CHANGES ON ERR SO DB ISN'T FOO-BAR'D
     await connection.query("ROLLBACK");
     console.log("ERROR IN SERVER GARDENBED POST", error);
     res.sendStatus(500);
   } finally {
+    //GAME OVER, RELEASE CONNECTION.  IT WAS FUN WHILE IT LASTED
     connection.release();
   }
 });
