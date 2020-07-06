@@ -24,6 +24,7 @@ import "./App.css";
 import GardenComplete from "../GardenComplete/GardenComplete";
 import UserEntryPage from "../UserEntryPage/UserEntryPage";
 import AllGardens from "../AllGardens/AllGardens";
+import CurrentGardenBed from "../CurrentGardenBed/CurrentGardenBed";
 
 class App extends Component {
   componentDidMount() {
@@ -61,8 +62,17 @@ class App extends Component {
             they will see the info page instead. */}
             {/* <ProtectedRoute exact path="/info" component={InfoPage} /> */}
             <ProtectedRoute exact path="/dimensions" component={InfoPage} />
-            <ProtectedRoute exact path="/create-garden" component={AllGardens} />
+            <ProtectedRoute
+              exact
+              path="/create-garden"
+              component={AllGardens}
+            />
             <ProtectedRoute exact path="/edit-garden" component={EditPage} />
+            <ProtectedRoute
+              exact
+              path="/current-garden"
+              component={CurrentGardenBed}
+            />
             <ProtectedRoute
               exact
               path="/my-gardens"
@@ -70,7 +80,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/current-garden"
+              path="/garden-created"
               component={GardenComplete}
             />
             {/* If none of the other routes matched, we will show a 404. */}

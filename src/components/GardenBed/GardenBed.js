@@ -31,12 +31,13 @@ class GardenBed extends Component {
       type: "CREATE_GARDEN_BED",
       payload: payload,
     });
-    this.setState({
-      seedCount: ' ',
-      materials: ' '
-    })
 
-    this.props.history.push("/current-garden");
+    this.props.dispatch({ type: "SET_CURRENT_GARDEN_BED", payload: payload });
+    this.setState({
+      seedCount: " ",
+      materials: " ",
+    });
+    this.props.history.push("/garden-created");
   };
 
   render() {

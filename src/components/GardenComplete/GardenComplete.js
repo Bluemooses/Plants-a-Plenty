@@ -8,6 +8,7 @@ import beansImg from "../../images/beans.png";
 import peasImg from "../../images/peas.png";
 import cornImg from "../../images/corn.png";
 class GardenComplete extends Component {
+  // DEFINES MOST CURRENT GARDEN SEED COUNTS
   carrot = this.props.state.seedCount.carrot;
   lettuce = this.props.state.seedCount.lettuce;
   bellPepper = this.props.state.seedCount.bellPepper;
@@ -16,10 +17,6 @@ class GardenComplete extends Component {
   corn = this.props.state.seedCount.corn;
   material = this.props.state.materials;
 
-  componentDidMount() {
-    console.log(this.props.state.vegImages);
-    console.log(this.carrotImg);
-  }
   render() {
     return (
       <div>
@@ -54,7 +51,6 @@ class GardenComplete extends Component {
         </section>
 
         {/* PROVIDE INFO FROM REDUCER ABOUT VEGETABLE SPACING */}
-
         <section className="gardenList">
           <label className="gardenLabel">Vegetable Spacing</label>
 

@@ -31,6 +31,8 @@ class AllGardens extends Component {
     );
   }
 }
+
+
 const mapStateToProps = (state) => ({
   state: state,
 });
