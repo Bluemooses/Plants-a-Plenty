@@ -52,7 +52,7 @@ class GardenBed extends Component {
           <li>Corn: {this.state.seedCount.corn}</li>
         </ul>
         <button onClick={(props) => this.addVeggie(props)}>
-          Add Veggies to My Garden
+          Create Garden
         </button>
       </div>
     );

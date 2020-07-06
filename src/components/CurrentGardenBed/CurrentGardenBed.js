@@ -24,7 +24,7 @@ class CurrentGardenBed extends Component {
 
   handleEdit = (bed) => {
     console.log(bed);
-    // this.props.history.push("/")
+    this.props.history.push("/edit-garden");
   };
 
   render() {
