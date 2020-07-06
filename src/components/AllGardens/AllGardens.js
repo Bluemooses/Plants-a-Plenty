@@ -4,7 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 
 class AllGardens extends Component {
   componentDidMount() {
-    const [latestGarden] = this.props.state.gardenBedReducer.slice(-1);
+    // const [latestGarden] = this.props.state.gardenBedReducer.slice(-1);
     this.forceUpdate();
   }
 

@@ -8,8 +8,9 @@ import React from 'react';
 const AboutPage = () => (
   <div>
     <div>
+      <h2>getPlanty</h2>
       <p>
-        This about page is for anyone to read!
+        getPlanty was created to bring knowledge and resources to individuals who have land, desire, and will to grow their own food.  Let getPlanty help you create a garden bed and begin your journey to self sufficiency
       </p>
     </div>
   </div>
