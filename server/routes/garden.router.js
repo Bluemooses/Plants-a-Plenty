@@ -26,9 +26,9 @@ JOIN "Seeds" ON "GardenBed"."id" = "Seeds"."garden_bed_id"`;
  */
 
 router.get(`/:id`, (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   console.log(req.params.id);
-  let id = req.params.id
+  let id = req.params.id;
   // id = req.body.
   queryUserGardens = queryUserGardens = `SELECT "GardenBed".*, "Materials".*, "Seeds".* FROM "GardenBed"
   JOIN "user" ON "user"."id" = "GardenBed"."user_id"
@@ -51,15 +51,12 @@ router.get(`/:id`, (req, res) => {
  * POST USER GARDEN INTO DB
  */
 router.post("/create-garden", async (req, res, next) => {
-  // console.log(req.body.payload);
-  // console.log(req.user.id);
   const connection = await pool.connect();
   try {
     console.log(req.user.id);
     userID = req.user.id;
 
     await connection.query("BEGIN");
-    // console.log(userID);
     // CREATE GARDEN BED ENTRY
     const sqlAddUserGardenBed = `INSERT INTO "GardenBed" ("user_id") VALUES ($1) RETURNING "id";`;
     const result = await connection.query(sqlAddUserGardenBed, [userID]);
@@ -82,6 +79,7 @@ router.post("/create-garden", async (req, res, next) => {
       gardenId,
     ];
 
+    // MATERIAL QUERY
     const sqlMaterialQuery = `INSERT INTO "Materials" ("sqFt", "wood_width", "wood_length", "wood_height", "hammer", "screws", "soil", "garden_bed_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
     const result2 = await connection.query(sqlMaterialQuery, [
       materialValues[0],
@@ -105,6 +103,7 @@ router.post("/create-garden", async (req, res, next) => {
       gardenId,
     ];
 
+    // SEEDS QUERY
     const sqlSeedQuery = `INSERT INTO "Seeds" ("carrot_seeds", "bell_pepper_seeds", "corn_seeds", "pea_seeds", "greenbean_seeds", "lettuce_seeds", "garden_bed_id") VALUES ($1, $2, $3, $4, $5, $6, $7);`;
     const result3 = await connection.query(sqlSeedQuery, [
       seedValues[0],

@@ -50,10 +50,20 @@ function* getThisGardenBed(action) {
   }
 }
 
+function* deleteGardenBed(action) {
+  try {
+    yield axios.delete(`api/garden/${action.payload}`);
+    yield put({ type: "GET_GARDEN_BEDS" });
+  } catch (error) {
+    console.log("ERROR DELETE GET", deleteGardenBed);
+  }
+}
+
 function* userSaga() {
   yield takeLatest("CREATE_GARDEN_BED", createGardenBed);
   yield takeLatest("GET_GARDEN_BEDS", getGardenBed);
   yield takeLatest("GET_THIS_GARDEN_BED", getThisGardenBed);
+  yield takeLatest("DELETE_USER_GARDEN", deleteGardenBed);
 }
 
 export default userSaga;

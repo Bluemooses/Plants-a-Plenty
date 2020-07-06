@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./GardenComplete.css";
-import carrotImg from "../../images/carrot.png";
-import bellPepperImg from "../../images/bell-pepper.png";
-import lettuceImg from "../../images/lettuce.png";
-import beansImg from "../../images/beans.png";
-import peasImg from "../../images/peas.png";
+// import carrotImg from "../../images/carrot.png";
+// import bellPepperImg from "../../images/bell-pepper.png";
+// import lettuceImg from "../../images/lettuce.png";
+// import beansImg from "../../images/beans.png";
+// import peasImg from "../../images/peas.png";
 import cornImg from "../../images/corn.png";
 class GardenComplete extends Component {
   // DEFINES MOST CURRENT GARDEN SEED COUNTS
@@ -31,10 +31,10 @@ class GardenComplete extends Component {
           <li>Square Footage: {this.material.sqFt} sqFt.</li>
           <li>Soil required: {this.material.soilCuYd} cuYd.</li>
           <li>
-            Wood height: {Number(this.material.height / 12).toFixed(2)} in.
+            Wood Height: {Number(this.material.height * 12).toFixed(2)} in.
           </li>
-          <li>Side Board Length: {this.material.length}</li>
-          <li>End Board Length: {this.material.width}</li>
+          <li>Side Board Length: {this.material.length} ft.</li>
+          <li>End Board Length: {this.material.width} ft.</li>
         </section>
 
         {/* VEGETABLES CHOSEN AND THEIR AMOUNTS */}
@@ -63,8 +63,10 @@ class GardenComplete extends Component {
                 </label>
                 <li>Column spacing: {veggie.seed_spacing} in.</li>
                 <li>Row spacing: {veggie.row_spacing} in.</li>
-                <li>Sq. footage: {(veggie.sq_in_per_seed / 144).toFixed(2)}</li>
-                <li>Sq inches: {veggie.sq_in_per_seed}</li>
+                <li>
+                  Sq ft. per plant: {(veggie.sq_in_per_seed / 144).toFixed(2)}
+                </li>
+                <li>Sq in. per plant: {veggie.sq_in_per_seed}</li>
               </ul>
             );
           })}

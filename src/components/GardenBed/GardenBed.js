@@ -8,13 +8,6 @@ class GardenBed extends Component {
     seedCount: [],
   };
 
-  componentDidMount() {
-    this.setState({
-      veggies: this.props.state.veggies,
-      seedCount: this.props.state.seedCount,
-    });
-  }
-
   componentWillReceiveProps(nextProps) {
     this.setState({
       seedCount: nextProps.state.seedCount,

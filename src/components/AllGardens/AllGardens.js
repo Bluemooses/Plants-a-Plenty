@@ -16,13 +16,17 @@ class AllGardens extends Component {
     this.props.history.push("/current-garden");
   };
 
+  dropGarden = (id) => {
+    console.log(id);
+  };
+
   render() {
     return (
       <div>
         <h3>Click Garden Bed to See and Edit Details</h3>
         <label>Your Gardens</label>
 
-      {/* PROVIDE LIST OF USER GARDEN BEDS */}
+        {/* PROVIDE LIST OF USER GARDEN BEDS */}
         {this.props.state.gardenBedReducer.map((gardenbed) => {
           return (
             <div>
@@ -32,7 +36,9 @@ class AllGardens extends Component {
                     <Link onClick={() => this.goToGarden(gardenbed)}>
                       Garden Bed: {gardenbed.id}
                     </Link>
-                    <br />
+                    <button onClick={() => this.dropGarden(gardenbed.id)}>
+                      Remove
+                    </button>
                   </span>
                 </p>
               </ul>
