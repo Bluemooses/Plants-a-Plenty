@@ -15,14 +15,28 @@ class AllGardens extends Component {
     });
     this.props.history.push("/current-garden");
   };
+
   render() {
     return (
       <div>
+        <h3>Click Garden Bed to See and Edit Details</h3>
+        <label>Your Gardens</label>
+
+      {/* PROVIDE LIST OF USER GARDEN BEDS */}
         {this.props.state.gardenBedReducer.map((gardenbed) => {
           return (
-            <li key={gardenbed.id} onClick={() => this.goToGarden(gardenbed)}>
-              <Link>Garden Bed: {gardenbed.id}</Link>
-            </li>
+            <div>
+              <ul>
+                <p className="userGardens" key={gardenbed.id}>
+                  <span>
+                    <Link onClick={() => this.goToGarden(gardenbed)}>
+                      Garden Bed: {gardenbed.id}
+                    </Link>
+                    <br />
+                  </span>
+                </p>
+              </ul>
+            </div>
           );
         })}
       </div>

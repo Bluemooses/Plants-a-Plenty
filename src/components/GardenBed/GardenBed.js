@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 
 class GardenBed extends Component {
   state = {
-    veggies: {},
-    seedCount: {},
+    veggies: [],
+    seedCount: [],
   };
 
   componentDidMount() {
@@ -31,21 +31,8 @@ class GardenBed extends Component {
       type: "CREATE_GARDEN_BED",
       payload: payload,
     });
-    const [latestGarden] = this.props.state.gardenBedReducer.slice(-1);
-    this.props.dispatch({
-      type: "SET_CURRENT_GARDEN_BED",
-      payload: latestGarden,
-    });
-    this.setState({
-      seedCount: " ",
-      materials: " ",
-    });
-    this.props.dispatch({
-      type: "GET_GARDEN_BEDS",
-    });
     this.props.history.push("/garden-created");
   };
-  
 
   render() {
     return (
