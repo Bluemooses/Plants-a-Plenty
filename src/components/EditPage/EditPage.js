@@ -1,11 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import VeggieButton from '../VeggieButton/VeggieButton';
+import VeggieButton from "../VeggieButton/VeggieButton";
 
 class EditPage extends Component {
+  state = {
+    seedCount: {},
+  };
+
+  // componentDidMount() {
+  //   // console.log(this.props.state);
+  //   // console.log(this.state);
+  //   console.log(this.props.state.currentGardenBed.greenbean_seeds);
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log(nextProps.state.currentGardenBed);
+  //   this.setState({
+  //     seedCount: { beans: nextProps.state.currentGardenBed.greenbean_seeds },
+  //   });
+  // }
   render() {
     return (
       <div>
+        <button
+          onClick={() => {
+            console.log(this.state.seedCount);
+          }}
+        ></button>
         <VeggieButton />
       </div>
     );

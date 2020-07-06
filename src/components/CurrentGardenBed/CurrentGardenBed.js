@@ -7,13 +7,6 @@ class CurrentGardenBed extends Component {
     currentBed: [],
   };
 
-  componentDidMount() {
-    console.log(this.props.state);
-    this.props.dispatch({
-      type: "GET_GARDEN_BEDS",
-    });
-  }
-
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.state.currentGardenBed);
     this.setState({
