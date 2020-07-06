@@ -22,9 +22,9 @@ const Nav = (props) => (
           <Link className="nav-link" to="/my-gardens">
             Create Garden
           </Link>
-          <Link className="nav-link" to="/current-garden">
+          {/* <Link className="nav-link" to="/current-garden">
             Current Garden
-          </Link>
+          </Link> */}
           <Link className="nav-link" to="/create-garden">
             My Gardens
           </Link>

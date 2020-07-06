@@ -62,14 +62,7 @@ function InputForm(props) {
         onChange={(event) => {
           setHeight(event.target.value);
         }}
-      />
-      {/* SHOW DATA ON DOM */}
-      <section>
-        <p value={0}>Cubic Feet: {cuFt}</p>
-        <p>Square Feet: {sqFt}</p>
-        <p>Dirt Required: {cuYards} cu. Yards</p>
-      </section>
-
+      />{" "}
       {/* DISPATCH USER DIMENSIONS */}
       <button
         onClick={() => {
@@ -78,6 +71,12 @@ function InputForm(props) {
       >
         Submit Dimensions
       </button>
+      {/* SHOW DATA ON DOM */}
+      <section>
+        <p value={0}>Cubic Feet: {cuFt}</p>
+        <p>Square Feet: {sqFt}</p>
+        <p>Dirt Required: {cuYards} cu. Yards</p>
+      </section>
     </div>
   );
 }

@@ -14,8 +14,9 @@ class AllGardens extends Component {
     console.log(gardenbed.id);
     this.props.dispatch({
       type: "GET_THIS_GARDEN_BED",
-      payload: gardenbed.id
+      payload: gardenbed.id,
     });
+    this.props.history.push("/current-garden");
   };
   render() {
     return (
@@ -31,7 +32,6 @@ class AllGardens extends Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => ({
   state: state,

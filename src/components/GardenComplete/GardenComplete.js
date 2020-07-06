@@ -8,7 +8,7 @@ import beansImg from "../../images/beans.png";
 import peasImg from "../../images/peas.png";
 import cornImg from "../../images/corn.png";
 class GardenComplete extends Component {
-  // DEFINES MOST CURRENT GARDEN SEED COUNTS
+// DEFINES MOST CURRENT GARDEN SEED COUNTS
   carrot = this.props.state.seedCount.carrot;
   lettuce = this.props.state.seedCount.lettuce;
   bellPepper = this.props.state.seedCount.bellPepper;

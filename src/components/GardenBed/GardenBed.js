@@ -31,8 +31,8 @@ class GardenBed extends Component {
       type: "CREATE_GARDEN_BED",
       payload: payload,
     });
-
-    this.props.dispatch({ type: "SET_CURRENT_GARDEN_BED", payload: payload });
+    const [latestGarden] = this.props.state.gardenBedReducer.slice(-1); 
+    this.props.dispatch({ type: "SET_CURRENT_GARDEN_BED", payload: latestGarden });
     this.setState({
       seedCount: " ",
       materials: " ",
