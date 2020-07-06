@@ -8,6 +8,9 @@ class AllGardens extends Component {
     console.log(latestGarden);
     console.log(this.props.state.gardenBedReducer);
   }
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
 
   goToGarden = (gardenbed) => {
     console.log(gardenbed);

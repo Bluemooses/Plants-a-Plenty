@@ -3,18 +3,35 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 class CurrentGardenBed extends Component {
-  currentBed = this.props.state.currentGardenBed;
+  state = {
+    currentBed: [],
+  };
 
   componentDidMount() {
     console.log(this.props.state);
-    console.log(this.currentBed);
+    this.props.dispatch({
+      type: "GET_GARDEN_BEDS",
+    });
   }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.state.currentGardenBed);
+    this.setState({
+      currentBed: nextProps.state.currentGardenBed,
+    });
+    console.log(this.state.currentBed);
+  }
+
+  handleEdit = (bed) => {
+    console.log(bed);
+    // this.props.history.push("/")
+  };
 
   render() {
     return (
       <div>
-        <label>Materials Required</label>
-        {this.currentBed.map((bed) => {
+        <label>Garden Details</label>
+        {this.state.currentBed.map((bed) => {
           return (
             <div>
               <ul>
@@ -39,6 +56,7 @@ class CurrentGardenBed extends Component {
                 <li>Bell Peppers: {bed.bell_pepper_seeds}</li>
                 <li>Corn: {bed.corn_seeds}</li>
               </ul>
+              <button onClick={() => this.handleEdit(bed)}>Edit Garden</button>
             </div>
           );
         })}
@@ -46,6 +64,7 @@ class CurrentGardenBed extends Component {
     );
   }
 }
+
 const mapStateToProps = (state) => ({
   state: state,
 });
