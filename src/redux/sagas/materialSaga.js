@@ -3,7 +3,7 @@ import { put, takeLatest } from "redux-saga/effects";
 
 function* materialSaga() {
   yield takeLatest("GET_MATERIALS", getMaterials);
-  yield takeLatest("CREATE_GARDEN_BED", postMaterials);
+  yield takeLatest("POST_MATERIALS", postMaterials);
 }
 
 function* getMaterials() {

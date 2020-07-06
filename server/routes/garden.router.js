@@ -40,6 +40,7 @@ router.get(`/:id`, (req, res) => {
     .query(queryUserGardens)
     .then((result) => {
       res.send(result.rows);
+      console.log(result.rows);
     })
     .catch((error) => {
       res.sendStatus(500);

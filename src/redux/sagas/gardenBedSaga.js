@@ -43,6 +43,8 @@ function* getThisGardenBed(action) {
       withCredentials: true,
     };
     const response = yield axios.get(`/api/garden/${action.payload}`);
+    console.log(response);
+    yield put({ type: "SET_CURRENT_GARDEN_BED", payload: response.data });
   } catch (error) {
     console.log("GARDEN BED ID CLIENT GET ERROR", error);
   }

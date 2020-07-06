@@ -104,3 +104,8 @@ ALTER TABLE "GardenBed_Veggies" ADD CONSTRAINT "GardenBed_Veggies_fk1" FOREIGN K
 ALTER TABLE "Materials" ADD CONSTRAINT "Materials_fk0" FOREIGN KEY ("garden_bed_id") REFERENCES "GardenBed"("ID");
 
 ALTER TABLE "Seeds" ADD CONSTRAINT "Seeds_fk0" FOREIGN KEY ("garden_bed_id") REFERENCES "GardenBed"("ID");
+
+
+INSERT INTO "Veggies" ("seed_spacing", "yield", "img", "description", "timing", "veggie_name", "row_spacing", "sq_in_per_seed")
+VALUES (3, 1, 'https://cdn.britannica.com/s:700x500/24/122524-004-9872AED2/Green-beans.jpg', 'Green bean, widely cultivated, edible-podded legume of the species Phaseolus vulgaris. 
+Rich in protein and providing moderate amounts of iron, thiamin, and riboflavin.', 'May', 'Green Bean', 20, 60), (12, 1, 'https://cdn.britannica.com/77/170677-050-F7333D51/lettuce.jpg', 'Lettuce, (Lactuca sativa), annual leaf vegetable of the aster family (Asteraceae).', 'May', 'Lettuce', 12, 144), (1, 1, 'https://cdn.britannica.com/s:700x500/05/122505-004-F2DA5352/Carrots.jpg', 'Carrot, (Daucus carota), herbaceous, generally biennial plant of the Apiaceae family that produces an edible taproot.', 'May', 'Carrot', 16, 16);
