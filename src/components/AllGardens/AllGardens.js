@@ -4,20 +4,28 @@ import { withRouter, Link } from "react-router-dom";
 
 class AllGardens extends Component {
   componentDidMount() {
+    this.props.dispatch({
+      type: "GET_GARDEN_BEDS",
+    });
     // const [latestGarden] = this.props.state.gardenBedReducer.slice(-1);
     this.forceUpdate();
   }
 
-  goToGarden = (gardenbed) => {
+  goToGarden = (id) => {
     this.props.dispatch({
       type: "GET_THIS_GARDEN_BED",
-      payload: gardenbed.id,
+      payload: id,
     });
     this.props.history.push("/current-garden");
   };
 
   dropGarden = (id) => {
+    this.props.dispatch({
+      type: "DELETE_USER_GARDEN",
+      payload: id,
+    });
     console.log(id);
+    this.forceUpdate();
   };
 
   render() {
@@ -33,10 +41,14 @@ class AllGardens extends Component {
               <ul>
                 <p className="userGardens" key={gardenbed.id}>
                   <span>
-                    <Link onClick={() => this.goToGarden(gardenbed)}>
+                    <Link
+                      onClick={() => this.goToGarden(gardenbed.garden_bed_id)}
+                    >
                       Garden Bed: {gardenbed.id}
                     </Link>
-                    <button onClick={() => this.dropGarden(gardenbed.id)}>
+                    <button
+                      onClick={() => this.dropGarden(gardenbed.garden_bed_id)}
+                    >
                       Remove
                     </button>
                   </span>

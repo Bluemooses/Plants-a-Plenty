@@ -6,10 +6,16 @@ const router = express.Router();
  * GET ALL GARDENS SPECIFIC TO USER
  */
 router.get("/", (req, res) => {
+  const userID = req.user.id;
+  console.log(userID);
+  console.log(req.user.id);
+
   queryUserGardens = `SELECT "GardenBed".*, "Materials".*, "Seeds".* FROM "GardenBed"
 JOIN "user" ON "user"."id" = "GardenBed"."user_id"
 JOIN "Materials" ON "GardenBed"."id" = "Materials"."garden_bed_id"
-JOIN "Seeds" ON "GardenBed"."id" = "Seeds"."garden_bed_id"`;
+JOIN "Seeds" ON "GardenBed"."id" = "Seeds"."garden_bed_id"
+WHERE "user_id" = ${userID}
+`;
 
   pool
     .query(queryUserGardens)
@@ -34,7 +40,7 @@ router.get(`/:id`, (req, res) => {
   JOIN "user" ON "user"."id" = "GardenBed"."user_id"
   JOIN "Materials" ON "GardenBed"."id" = "Materials"."garden_bed_id"
   JOIN "Seeds" ON "GardenBed"."id" = "Seeds"."garden_bed_id"
-  WHERE "Seeds"."id" = ${id}`;
+  WHERE "GardenBed"."id" = ${id}`;
 
   pool
     .query(queryUserGardens)
@@ -60,8 +66,6 @@ router.post("/create-garden", async (req, res, next) => {
     // CREATE GARDEN BED ENTRY
     const sqlAddUserGardenBed = `INSERT INTO "GardenBed" ("user_id") VALUES ($1) RETURNING "id";`;
     const result = await connection.query(sqlAddUserGardenBed, [userID]);
-    // console.log(result);
-    // console.log(result.rows);
 
     // CREATE LINK BETWEEN GARDEN BED AND USER
     const gardenId = result.rows[0].id;
@@ -130,5 +134,43 @@ router.post("/create-garden", async (req, res, next) => {
     connection.release();
   }
 });
+
+router.delete("/:id", async (req, res) => {
+  const connection = await pool.connect();
+  console.log(req.params);
+  userID = req.user.id;
+  let gardenBedID = req.params.id;
+  try {
+    const sqlDelete = `DELETE FROM "GardenBed" WHERE id=$1 AND "user_id"=$2;`;
+    const sqlDelete2 = `DELETE FROM "Materials" WHERE "garden_bed_id"=$1;`;
+    const sqlDelete3 = `DELETE FROM "Seeds" WHERE "garden_bed_id"=$1;`;
+
+    const materialsResult = await connection.query(sqlDelete2, [gardenBedID]);
+    const seedsResult = await connection.query(sqlDelete3, [gardenBedID]);
+    const gardenBedResult = await connection.query(sqlDelete, [
+      gardenBedID,
+      userID,
+    ]);
+
+    await connection.query("COMMIT");
+    console.log("success");
+    res.sendStatus(201);
+  } catch (error) {
+    await connection.query("ROLLBACK");
+    console.log("error in server side self report response POST", error);
+    res.sendStatus(500);
+  } finally {
+    connection.release();
+  }
+});
+
+// pool
+//   .query(sqlDelete, [req.params.id])
+//   .then((result) => res.sendStatus(200))
+//   .catch((error) => {
+//     console.log("DELETE GARDEN SERVER ERR", error);
+//     res.sendStatus(500);
+//     });
+// });
 
 module.exports = router;
