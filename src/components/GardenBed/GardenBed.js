@@ -8,6 +8,12 @@ class GardenBed extends Component {
     seedCount: [],
   };
 
+  componentDidMount() {
+    this.setState({
+      seedCount: this.props.state.seedCount,
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       seedCount: nextProps.state.seedCount,
@@ -23,6 +29,9 @@ class GardenBed extends Component {
     this.props.dispatch({
       type: "CREATE_GARDEN_BED",
       payload: payload,
+    });
+    this.setState({
+      seedCount: " ",
     });
     this.props.history.push("/garden-created");
   };
