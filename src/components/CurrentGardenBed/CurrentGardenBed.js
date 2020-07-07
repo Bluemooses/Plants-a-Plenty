@@ -11,14 +11,8 @@ class CurrentGardenBed extends Component {
     isEditing: false,
   };
 
-  // componentDidMount() {
-  //   this.forceUpdate();
-  //   this.setState({
-  //     currentBed: this.props.state.currentGardenBed,
-  //   });
-  // }
+  // SET MOST RECENT USER SEED COUNT && SET OUR CURRENT GARDEN BED
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.state.currentGardenBed);
     this.setState({
       currentBed: nextProps.state.currentGardenBed,
       seedCount: nextProps.state.seedCount,
@@ -26,23 +20,31 @@ class CurrentGardenBed extends Component {
     console.log(this.state.currentBed);
   }
 
+  //SEND US THE CURRENT GARDEN BED INFORMATION SET MOST RECENT SEEDS TO CURRENT BED.
   handleEdit = (bed, payload) => {
     console.log(bed);
     console.log(payload);
-    // this.props.history.push("/edit-garden");
     this.setState({
       isEditing: !this.state.isEditing,
     });
-
-    console.log(this.props.state.currentGardenBed.carrot_seeds);
-
-    console.log(payload);
     this.props.dispatch({ type: "SET_CURRENT_SEEDS", payload: payload });
     console.log(this.props.state);
   };
 
-  handleGardenBedChanges = () => {
+  handleGardenBedChanges = (bed) => {
+    // this.props.dispatch({ type: "UPDATE_SEEDS", payload: payload });
     console.log("submit complete");
+    // console.log(payload);
+    let updatePayload = {
+      carrot: this.props.state.seedCount.carrot,
+      corn: this.props.state.seedCount.corn,
+      bellPepper: this.props.state.seedCount.bellPepper,
+      peas: this.props.state.seedCount.peas,
+      beans: this.props.state.seedCount.beans,
+      lettuce: this.props.state.seedCount.lettuce,
+    };
+    console.log(updatePayload);
+    
   };
 
   render() {
@@ -75,12 +77,12 @@ class CurrentGardenBed extends Component {
               <label>Plants Selected</label>
               {!this.state.isEditing ? (
                 <ul>
-                  <li>Carrots: {bed.carrot_seeds}</li>
-                  <li>Lettuce: {bed.lettuce_seeds}</li>
-                  <li>Green Beans: {bed.greenbean_seeds}</li>
-                  <li>Peas: {bed.pea_seeds}</li>
-                  <li>Bell Peppers: {bed.bell_pepper_seeds}</li>
-                  <li>Corn: {bed.corn_seeds}</li>
+                  <li>Carrots: {payload.carrot}</li>
+                  <li>Lettuce: {payload.lettuce}</li>
+                  <li>Green Beans: {payload.beans}</li>
+                  <li>Peas: {payload.peas}</li>
+                  <li>Bell Peppers: {payload.bellPepper}</li>
+                  <li>Corn: {payload.corn}</li>
                 </ul>
               ) : (
                 <ul>
@@ -104,7 +106,7 @@ class CurrentGardenBed extends Component {
                     <VeggieButton />
                     <button
                       onClick={() => {
-                        this.handleGardenBedChanges();
+                        this.handleGardenBedChanges(bed, payload);
                       }}
                     >
                       Submit Changes

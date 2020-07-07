@@ -8,18 +8,21 @@ class GardenBed extends Component {
     seedCount: [],
   };
 
+  // GIVE INITIAL VALUE TO SHOW 0's
   componentDidMount() {
     this.setState({
       seedCount: this.props.state.seedCount,
     });
   }
-  componentWillReceiveProps;
+
+  // SHOW NEW VALUE
   componentWillReceiveProps(nextProps) {
     this.setState({
       seedCount: nextProps.state.seedCount,
     });
   }
 
+  // CREATE GARDEN / SEND OUR DATAOBJECT/ RESET LOCAL SEED COUNT/ MOVE TO NEW ROUTE
   addVeggie = (props) => {
     console.log("click");
     let payload = {
