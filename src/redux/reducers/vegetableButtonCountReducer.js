@@ -7,7 +7,6 @@ const vegetableButtonCountReducer = (
     peas: 0,
     beans: 0,
     lettuce: 0,
-    
   },
   action
 ) => {
@@ -76,6 +75,8 @@ const vegetableButtonCountReducer = (
           }
           break;
       }
+    case "SET_CURRENT_SEEDS":
+      return action.payload;
     default:
       return state;
   }

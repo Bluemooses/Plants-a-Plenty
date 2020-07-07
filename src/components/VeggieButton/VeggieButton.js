@@ -8,6 +8,7 @@ class VeggieButton extends Component {
       type: "VEGGIE_CLICKED",
       payload: payload,
     });
+    console.log(payload);
   }
 
   render() {
@@ -17,13 +18,15 @@ class VeggieButton extends Component {
         {this.props.vegImages.map((veggie) => {
           let payload = {
             type: veggie.type,
-            img: veggie.img
+            img: veggie.img,
           }; //this is what we want to keep track of;
 
           return (
             <div>
               {/* Appends name to help user define buttons */}
-              <label className="button-label">{veggie.type}</label>
+              <label key={veggie.id} className="button-label">
+                {veggie.type}
+              </label>
 
               {/* Provides the image clicked which handles adding or removing vegetables by their type. */}
               <img
