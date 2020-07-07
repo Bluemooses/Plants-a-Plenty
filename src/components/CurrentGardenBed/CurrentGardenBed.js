@@ -9,6 +9,7 @@ class CurrentGardenBed extends Component {
     currentBed: [],
     seedCount: [],
     isEditing: false,
+    currentGardenBed: 0,
   };
 
   // SET MOST RECENT USER SEED COUNT && SET OUR CURRENT GARDEN BED
@@ -16,6 +17,7 @@ class CurrentGardenBed extends Component {
     this.setState({
       currentBed: nextProps.state.currentGardenBed,
       seedCount: nextProps.state.seedCount,
+      garden_bed_id: nextProps.state.currentGardenBed.garden_bed_id,
     });
     console.log(this.state.currentBed);
   }
@@ -31,10 +33,9 @@ class CurrentGardenBed extends Component {
     console.log(this.props.state);
   };
 
-  handleGardenBedChanges = (bed) => {
-    // this.props.dispatch({ type: "UPDATE_SEEDS", payload: payload });
+  handleGardenBedChanges = (bed, payload) => {
     console.log("submit complete");
-    // console.log(payload);
+    console.log(bed);
     let updatePayload = {
       carrot: this.props.state.seedCount.carrot,
       corn: this.props.state.seedCount.corn,
@@ -42,9 +43,15 @@ class CurrentGardenBed extends Component {
       peas: this.props.state.seedCount.peas,
       beans: this.props.state.seedCount.beans,
       lettuce: this.props.state.seedCount.lettuce,
+      garden_bed_id: this.state.currentBed[0].garden_bed_id,
     };
+    console.log(payload.garden_bed_id);
+
     console.log(updatePayload);
-    
+    this.props.dispatch({ type: "UPDATE_SEEDS", payload: updatePayload });
+    this.setState({
+      isEditing: !this.state.isEditing,
+    });
   };
 
   render() {

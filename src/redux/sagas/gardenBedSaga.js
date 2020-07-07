@@ -59,11 +59,22 @@ function* deleteGardenBed(action) {
   }
 }
 
+function* updateSeeds(action) {
+  console.log(action.payload);
+  try {
+    // yield axios.put(`api/garden/${action.payload.garden_bed_id}`)
+    yield put({ type: "SET_CURRENT_SEEDS", payload: action.payload });
+  } catch (error) {
+    console.log("CLIENT UPDATE ERR", error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest("CREATE_GARDEN_BED", createGardenBed);
   yield takeLatest("GET_GARDEN_BEDS", getGardenBed);
   yield takeLatest("GET_THIS_GARDEN_BED", getThisGardenBed);
   yield takeLatest("DELETE_USER_GARDEN", deleteGardenBed);
+  yield takeLatest("UPDATE_SEEDS", updateSeeds);
 }
 
 export default userSaga;
