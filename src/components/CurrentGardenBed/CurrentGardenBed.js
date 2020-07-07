@@ -7,6 +7,7 @@ import "./CurrentGardenBed.css";
 class CurrentGardenBed extends Component {
   state = {
     currentBed: [],
+    seedCount: [],
     isEditing: false,
   };
 
@@ -20,6 +21,7 @@ class CurrentGardenBed extends Component {
     console.log(nextProps.state.currentGardenBed);
     this.setState({
       currentBed: nextProps.state.currentGardenBed,
+      seedCount: nextProps.state.seedCount,
     });
     console.log(this.state.currentBed);
   }
@@ -63,7 +65,6 @@ class CurrentGardenBed extends Component {
                 <ul>
                   <li>{bed.soil} cuYd.</li>
                 </ul>
-
                 <label>Bed Dimensions in Ft</label>
                 <ul>
                   <li>Length: {bed.wood_length} </li>
@@ -83,14 +84,12 @@ class CurrentGardenBed extends Component {
                 </ul>
               ) : (
                 <ul>
-                  <li>Carrots: {this.props.state.seedCount.carrot}</li>
-                  <li>Lettuce: {this.props.state.seedCount.lettuce}</li>
-                  <li>Green Beans: {this.props.state.seedCount.beans}</li>
-                  <li>Peas: {this.props.state.seedCount.peas}</li>
-                  <li>
-                    Bell Peppers: {this.props.state.seedCount.bellPepper}
-                  </li>{" "}
-                  <li>Corn: {this.props.state.seedCount.corn}</li>
+                  <li>Carrots: {this.state.seedCount.carrot}</li>
+                  <li>Lettuce: {this.state.seedCount.lettuce}</li>
+                  <li>Green Beans: {this.state.seedCount.beans}</li>
+                  <li>Peas: {this.state.seedCount.peas}</li>
+                  <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
+                  <li>Corn: {this.state.seedCount.corn}</li>
                 </ul>
               )}
               <button onClick={() => this.handleEdit(bed, payload)}>

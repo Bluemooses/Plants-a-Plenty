@@ -10,8 +10,8 @@ const vegetableButtonCountReducer = (
   },
   action
 ) => {
-  console.log(action.payload);
-
+  // console.log(action.payload);
+  console.log(state);
   switch (action.type) {
     case "VEGGIE_CLICKED":
       switch (action.payload.type) {
@@ -36,47 +36,54 @@ const vegetableButtonCountReducer = (
         default:
           return state;
       }
-
     case "VEGGIE_REMOVED":
       switch (action.payload.type) {
         case "Carrot":
           if (state.carrot > 0) {
             return { ...state, carrot: state.carrot - 1 };
+          } else {
+            return state;
           }
-          break;
-
         case "Bell Pepper":
           if (state.bellPepper > 0) {
             return { ...state, bellPepper: state.bellPepper - 1 };
+          } else {
+            return state;
           }
-          break;
 
         case "Corn":
           if (state.corn > 0) {
             return { ...state, corn: state.corn - 1 };
+          } else {
+            return state;
           }
-          break;
 
         case "Peas":
           if (state.peas > 0) {
             return { ...state, peas: state.peas - 1 };
+          } else {
+            return state;
           }
-          break;
 
-        case "Beans":
+        case "Green Bean":
           if (state.beans > 0) {
             return { ...state, beans: state.beans - 1 };
+          } else {
+            return state;
           }
-          break;
 
         case "Lettuce":
           if (state.lettuce > 0) {
+            console.log(state);
             return { ...state, lettuce: state.lettuce - 1 };
+          } else {
+            return state;
           }
-          break;
+
+        default:
+          return state;
       }
-    case "SET_CURRENT_SEEDS":
-      return action.payload;
+
     default:
       return state;
   }

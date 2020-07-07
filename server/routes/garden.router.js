@@ -141,9 +141,9 @@ router.delete("/:id", async (req, res) => {
   userID = req.user.id;
   let gardenBedID = req.params.id;
   try {
-    const sqlDelete = `DELETE FROM "GardenBed" WHERE id=$1 AND "user_id"=$2;`;
     const sqlDelete2 = `DELETE FROM "Materials" WHERE "garden_bed_id"=$1;`;
     const sqlDelete3 = `DELETE FROM "Seeds" WHERE "garden_bed_id"=$1;`;
+    const sqlDelete = `DELETE FROM "GardenBed" WHERE id=$1 AND "user_id"=$2;`;
 
     const materialsResult = await connection.query(sqlDelete2, [gardenBedID]);
     const seedsResult = await connection.query(sqlDelete3, [gardenBedID]);
@@ -151,6 +151,29 @@ router.delete("/:id", async (req, res) => {
       gardenBedID,
       userID,
     ]);
+
+    await connection.query("COMMIT");
+    console.log("success");
+    res.sendStatus(201);
+  } catch (error) {
+    await connection.query("ROLLBACK");
+    console.log("error in server side self report response POST", error);
+    res.sendStatus(500);
+  } finally {
+    connection.release();
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const connection = await pool.connect();
+  console.log(req.params);
+  userID = req.user.id;
+  let gardenBedID = req.params.id;
+  try {
+    const sqlUpdateSeeds = `UPDATE "Seeds" 
+    SET ("bell_pepper_seeds", "carrot_seeds", "greenbean_seeds", "lettuce_seeds", "corn_seeds", "pea_seeds") 
+    = ($1, $2, $3, $4, $5, $6) WHERE "garden_bed_id"=${id}=$1;`;
+    const seedsResult = await connection.query(sqlUpdateSeeds, [gardenBedID]);
 
     await connection.query("COMMIT");
     console.log("success");

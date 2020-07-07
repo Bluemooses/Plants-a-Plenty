@@ -77,7 +77,7 @@ class GardenComplete extends Component {
         </button>
 
         <section className="gardenImages">
-          <img src={cornImg}></img>
+          <img src={cornImg} alt="Corn"></img>
         </section>
       </div>
     );
