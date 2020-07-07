@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import VeggieButton from "../VeggieButton/VeggieButton";
+import "./CurrentGardenBed.css";
 
 class CurrentGardenBed extends Component {
   state = {
     currentBed: [],
+    isEditing: false,
   };
 
   // componentDidMount() {
@@ -23,7 +26,10 @@ class CurrentGardenBed extends Component {
 
   handleEdit = (bed) => {
     console.log(bed);
-    this.props.history.push("/edit-garden");
+    // this.props.history.push("/edit-garden");
+    this.setState({
+      isEditing: !this.state.isEditing,
+    });
   };
 
   render() {
@@ -55,7 +61,15 @@ class CurrentGardenBed extends Component {
                 <li>Bell Peppers: {bed.bell_pepper_seeds}</li>
                 <li>Corn: {bed.corn_seeds}</li>
               </ul>
-              <button onClick={() => this.handleEdit(bed)}>Edit Garden</button>
+              <button onClick={() => this.handleEdit(bed)}>
+                {!this.state.isEditing ? "Edit Garden" : "Undo"}
+              </button>
+              <button onClick={() => this.props.history.push("/create-garden")}>
+                Back to Gardens
+              </button>
+              <section className="veggieButtons">
+                {this.state.isEditing ? <VeggieButton /> : <div></div>}
+              </section>
             </div>
           );
         })}
