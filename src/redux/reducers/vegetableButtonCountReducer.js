@@ -83,6 +83,8 @@ const vegetableButtonCountReducer = (
         default:
           return state;
       }
+    case "SET_CURRENT_SEEDS":
+      return action.payload;
 
     default:
       return state;

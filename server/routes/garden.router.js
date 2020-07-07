@@ -141,6 +141,8 @@ router.delete("/:id", async (req, res) => {
   userID = req.user.id;
   let gardenBedID = req.params.id;
   try {
+    await connection.query("BEGIN");
+
     const sqlDelete2 = `DELETE FROM "Materials" WHERE "garden_bed_id"=$1;`;
     const sqlDelete3 = `DELETE FROM "Seeds" WHERE "garden_bed_id"=$1;`;
     const sqlDelete = `DELETE FROM "GardenBed" WHERE id=$1 AND "user_id"=$2;`;
@@ -170,9 +172,21 @@ router.put("/:id", async (req, res) => {
   userID = req.user.id;
   let gardenBedID = req.params.id;
   try {
+    await connection.query("BEGIN");
+
+    seedValues = [
+      req.body.seedCount.carrot,
+      req.body.seedCount.bellPepper,
+      req.body.seedCount.corn,
+      req.body.seedCount.peas,
+      req.body.seedCount.beans,
+      req.body.seedCount.lettuce,
+      gardenBedId,
+    ];
+
     const sqlUpdateSeeds = `UPDATE "Seeds" 
     SET ("bell_pepper_seeds", "carrot_seeds", "greenbean_seeds", "lettuce_seeds", "corn_seeds", "pea_seeds") 
-    = ($1, $2, $3, $4, $5, $6) WHERE "garden_bed_id"=${id}=$1;`;
+    = ($1, $2, $3, $4, $5, $6) WHERE "garden_bed_id"=$7;`;
     const seedsResult = await connection.query(sqlUpdateSeeds, [gardenBedID]);
 
     await connection.query("COMMIT");
