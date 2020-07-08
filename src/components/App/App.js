@@ -25,6 +25,7 @@ import GardenComplete from "../GardenComplete/GardenComplete";
 import UserEntryPage from "../UserEntryPage/UserEntryPage";
 import AllGardens from "../AllGardens/AllGardens";
 import CurrentGardenBed from "../CurrentGardenBed/CurrentGardenBed";
+import VeggieDescriptions from "../VeggieDescriptions/VeggieDescriptions";
 
 class App extends Component {
   componentDidMount() {
@@ -82,6 +83,11 @@ class App extends Component {
               exact
               path="/garden-created"
               component={GardenComplete}
+            />
+            <ProtectedRoute
+              exact
+              path="/vegetable-descriptions"
+              component={VeggieDescriptions}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

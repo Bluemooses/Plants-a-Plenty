@@ -61,9 +61,15 @@ function* deleteGardenBed(action) {
 
 function* updateSeeds(action) {
   console.log(action.payload);
+  console.log(action.payload.garden_bed_id);
   try {
-    // yield axios.put(`api/garden/${action.payload.garden_bed_id}`)
-    yield put({ type: "SET_CURRENT_SEEDS", payload: action.payload });
+    yield axios.put(
+      `api/garden/${action.payload.garden_bed_id}`,
+      action.payload
+    );
+    console.log(action.payload.garden_bed_id);
+
+    // yield put({ type: "SET_CURRENT_SEEDS", payload: action.payload });
   } catch (error) {
     console.log("CLIENT UPDATE ERR", error);
   }

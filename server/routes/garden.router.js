@@ -166,48 +166,44 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
-  const connection = await pool.connect();
-  console.log(req.params);
+router.put("/:id", (req, res) => {
+  console.log(req.body);
+  console.log(req.body.garden_bed_id);
   userID = req.user.id;
-  let gardenBedID = req.params.id;
-  try {
-    await connection.query("BEGIN");
 
-    seedValues = [
-      req.body.seedCount.carrot,
-      req.body.seedCount.bellPepper,
-      req.body.seedCount.corn,
-      req.body.seedCount.peas,
-      req.body.seedCount.beans,
-      req.body.seedCount.lettuce,
-      gardenBedId,
-    ];
+  seedValues = [
+    req.body.bellPepper,
+    req.body.carrot,
+    req.body.beans,
+    req.body.lettuce,
+    req.body.corn,
+    req.body.peas,
+    req.body.garden_bed_id,
+  ];
 
-    const sqlUpdateSeeds = `UPDATE "Seeds" 
-    SET ("bell_pepper_seeds", "carrot_seeds", "greenbean_seeds", "lettuce_seeds", "corn_seeds", "pea_seeds") 
-    = ($1, $2, $3, $4, $5, $6) WHERE "garden_bed_id"=$7;`;
-    const seedsResult = await connection.query(sqlUpdateSeeds, [gardenBedID]);
+  const sqlUpdateSeeds = `UPDATE "Seeds" 
+    SET ("bell_pepper_seeds", "carrot_seeds", "greenbean_seeds", "lettuce_seeds", "corn_seeds", "pea_seeds") = ($1, $2, $3, $4, $5, $6) WHERE "garden_bed_id"=$7;`;
 
-    await connection.query("COMMIT");
-    console.log("success");
-    res.sendStatus(201);
-  } catch (error) {
-    await connection.query("ROLLBACK");
-    console.log("error in server side self report response POST", error);
-    res.sendStatus(500);
-  } finally {
-    connection.release();
-  }
+  pool
+    .query(sqlUpdateSeeds, [
+      seedValues[0],
+      seedValues[1],
+      seedValues[2],
+      seedValues[3],
+      seedValues[4],
+      seedValues[5],
+      seedValues[6],
+    ])
+    .then((result) => {
+      console.log(result);
+      console.log("success");
+
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER PUT", error);
+      res.sendStatus(500);
+    });
 });
-
-// pool
-//   .query(sqlDelete, [req.params.id])
-//   .then((result) => res.sendStatus(200))
-//   .catch((error) => {
-//     console.log("DELETE GARDEN SERVER ERR", error);
-//     res.sendStatus(500);
-//     });
-// });
 
 module.exports = router;

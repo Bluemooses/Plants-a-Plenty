@@ -52,6 +52,8 @@ class CurrentGardenBed extends Component {
     this.setState({
       isEditing: !this.state.isEditing,
     });
+
+    this.props.history.push("/create-garden");
   };
 
   render() {
