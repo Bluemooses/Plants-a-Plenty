@@ -5,7 +5,7 @@ import VeggieItem from "../VeggieItem/VeggieItem";
 function VeggieDescriptions(props) {
   return (
     <div>
-      <h2>Click Image to See Description</h2>
+      <h2>Click Image For More Information</h2>
       {props.veggies.map((veggie, id) => {
         return <VeggieItem key={id} veggie={veggie} />;
       })}

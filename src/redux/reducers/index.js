@@ -9,6 +9,7 @@ import seedCount from "./vegetableButtonCountReducer";
 import vegDetails from "./veggieDetailsReducer";
 import gardenBedReducer from "./gardenBedReducer";
 import currentGardenBed from "./currentGardenBed";
+import veggiePictureReducer from "./veggiePictureReducer";
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   vegDetails,
   gardenBedReducer,
   currentGardenBed,
+  veggiePictureReducer,
 });
 
 export default rootReducer;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import VeggieCard from "../VeggieCard/VeggieCard";
 import Popup from "reactjs-popup";
+import "./VeggieItem.css";
 
 function VeggieItem(props) {
   function goToVeggie() {
@@ -12,7 +13,7 @@ function VeggieItem(props) {
     <div margin={"30px"}>
       {" "}
       <Popup
-        padding={"20px"}
+        className="popUp"
         margin={20}
         position="right"
         width={"125%"}
@@ -45,25 +46,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(VeggieItem);
-
-// goToVeggie() {
-//     setState({
-//       toggleDescription: !state.toggleDescription,
-//     });
-//   }
-//     return (
-//       <div>
-//         {state.toggleDescription ? (
-//           <img
-//             width={"25%"}
-//             className="veggieImage"
-//             onClick={() => goToVeggie()}
-//             src={props.veggie.img}
-//             alt={props.veggies.key}
-//           />
-//         ) : (
-//           <div onClick={() => goToVeggie()}>
-//             <VeggieCard veggie={props.veggie} />
-//           </div>
-//         )}
-//       </div>
