@@ -10,6 +10,9 @@ class GardenBed extends Component {
 
   // GIVE INITIAL VALUE TO SHOW 0's
   componentDidMount() {
+    this.props.dispatch({
+      type: "RESET_SEED COUNT",
+    });
     this.setState({
       seedCount: this.props.state.seedCount,
     });

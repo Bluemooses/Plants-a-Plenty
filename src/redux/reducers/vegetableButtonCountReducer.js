@@ -88,6 +88,16 @@ const vegetableButtonCountReducer = (
 
     default:
       return state;
+
+    case "RESET_SEED COUNT":
+      return (state = {
+        carrot: 0,
+        bellPepper: 0,
+        corn: 0,
+        peas: 0,
+        beans: 0,
+        lettuce: 0,
+      });
   }
 };
 

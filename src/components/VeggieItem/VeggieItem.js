@@ -1,46 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import VeggieCard from "../VeggieCard/VeggieCard";
+import Popup from "reactjs-popup";
 
-class VeggieItem extends Component {
-  state = {
-    toggleDescription: true,
-  };
-
-  componentDidMount() {
-    console.log(this.props);
-    console.log(this.props.state);
-    console.log(this.props.history);
-    console.log(this.props.veggies);
+function VeggieItem(props) {
+  function goToVeggie() {
+    console.log("click");
   }
 
-  goToVeggie() {
-    this.setState({
-      toggleDescription: !this.state.toggleDescription,
-    });
-  }
-  render() {
-    return (
-      <div>
-        {this.state.toggleDescription ? (
+  return (
+    <div margin={"30px"}>
+      {" "}
+      <Popup
+        padding={"20px"}
+        margin={20}
+        position="right"
+        width={"125%"}
+        closeOnDocumentClick
+        trigger={
           <img
+            width={"25%"}
             className="veggieImage"
-            onClick={() => this.goToVeggie()}
-            src={this.props.veggie.img}
-            alt={this.props.veggies.key}
+            onClick={() => goToVeggie()}
+            src={props.veggie.img}
+            alt={props.veggies.key}
           />
-        ) : (
-          <div onClick={() => this.goToVeggie()}>
-            <VeggieCard veggie={this.props.veggie} />
-          </div>
-        )}
-      </div>
-    );
-  }
+        }
+        modal
+      >
+        <div>
+          <VeggieCard veggie={props.veggie} />
+        </div>
+      </Popup>
+    </div>
+  );
 }
 
 // Instead of taking everything from state, we just want the error messages.
-// if you wanted you could write this code like this:
+// if you wanted you could write code like
 // const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = (state) => ({
   state: state,
@@ -48,3 +45,25 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(VeggieItem);
+
+// goToVeggie() {
+//     setState({
+//       toggleDescription: !state.toggleDescription,
+//     });
+//   }
+//     return (
+//       <div>
+//         {state.toggleDescription ? (
+//           <img
+//             width={"25%"}
+//             className="veggieImage"
+//             onClick={() => goToVeggie()}
+//             src={props.veggie.img}
+//             alt={props.veggies.key}
+//           />
+//         ) : (
+//           <div onClick={() => goToVeggie()}>
+//             <VeggieCard veggie={props.veggie} />
+//           </div>
+//         )}
+//       </div>
