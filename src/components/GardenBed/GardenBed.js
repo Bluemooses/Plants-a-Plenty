@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
+import carrot from "../../images/carrot.png";
+import bellPepper from "../../images/bell-pepper.png";
+import lettuce from "../../images/lettuce.png";
+import beans from "../../images/beans.png";
+import peas from "../../images/peas.png";
+import corn from "../../images/corn.png";
 class GardenBed extends Component {
   state = {
     veggies: [],
@@ -53,9 +60,26 @@ class GardenBed extends Component {
           <li>Peas: {this.state.seedCount.peas}</li>
           <li>Corn: {this.state.seedCount.corn}</li>
         </ul>
+
         <button onClick={(props) => this.addVeggie(props)}>
           Create Garden
         </button>
+        <div className="gardenBedBox">
+          {Array(this.state.seedCount.carrot).fill(
+            <img src={carrot} alt="Carrot" />
+          )}
+          {Array(this.state.seedCount.bellPepper).fill(
+            <img src={bellPepper} alt="Bell Pepper" />
+          )}
+          {Array(this.state.seedCount.lettuce).fill(
+            <img src={lettuce} alt="Lettuce" />
+          )}
+          {Array(this.state.seedCount.beans).fill(
+            <img src={beans} alt="Beans" />
+          )}
+          {Array(this.state.seedCount.peas).fill(<img src={peas} alt="Peas" />)}
+          {Array(this.state.seedCount.corn).fill(<img src={corn} alt="Corn" />)}
+        </div>
       </div>
     );
   }

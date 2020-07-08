@@ -1,5 +1,9 @@
 import carrot from "../../images/carrot.png";
 
+function remove(array, element) {
+  return array.filter((el) => el !== element);
+}
+
 const veggiePictureReducer = (state = [], action) => {
   switch (action.type) {
     case "VEGGIE_CLICKED":
@@ -8,19 +12,18 @@ const veggiePictureReducer = (state = [], action) => {
           return [...state, carrot];
 
         case "Bell Pepper":
-          return { ...state, bellPepper: state.bellPepper + 1 };
+          return [...state, carrot];
 
         case "Corn":
-          return { ...state, corn: state.corn + 1 };
+          return [...state, carrot];
 
         case "Peas":
-          return { ...state, peas: state.peas + 1 };
+          return [...state, carrot];
 
         case "Green Bean":
-          return { ...state, beans: state.beans + 1 };
-
+          return [...state, carrot];
         case "Lettuce":
-          return { ...state, lettuce: state.lettuce + 1 };
+          return [...state, carrot];
 
         default:
           return state;
@@ -28,35 +31,34 @@ const veggiePictureReducer = (state = [], action) => {
     case "VEGGIE_REMOVED":
       switch (action.payload.type) {
         case "Carrot":
-          if (state.carrot > 0) {
-            return { ...state, carrot: state.carrot - 1 };
-          } else {
-            return state;
-          }
+          console.log("STATE IS", state, "CARROT IS", carrot);
+          const newerArray = remove(state, carrot);
+          console.log(newerArray);
+          return  newerArray;
         case "Bell Pepper":
           if (state.bellPepper > 0) {
-            return { ...state, bellPepper: state.bellPepper - 1 };
+            return [...state, carrot];
           } else {
             return state;
           }
 
         case "Corn":
           if (state.corn > 0) {
-            return { ...state, corn: state.corn - 1 };
+            return [...state, carrot];
           } else {
             return state;
           }
 
         case "Peas":
           if (state.peas > 0) {
-            return { ...state, peas: state.peas - 1 };
+            return [...state, carrot];
           } else {
             return state;
           }
 
         case "Green Bean":
           if (state.beans > 0) {
-            return { ...state, beans: state.beans - 1 };
+            return [...state, carrot];
           } else {
             return state;
           }
@@ -64,7 +66,7 @@ const veggiePictureReducer = (state = [], action) => {
         case "Lettuce":
           if (state.lettuce > 0) {
             console.log(state);
-            return { ...state, lettuce: state.lettuce - 1 };
+            return [...state, carrot];
           } else {
             return state;
           }
