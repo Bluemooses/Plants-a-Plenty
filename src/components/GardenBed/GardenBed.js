@@ -14,6 +14,7 @@ class GardenBed extends Component {
   state = {
     veggies: [],
     seedCount: [],
+    materials: [],
   };
 
   // GIVE INITIAL VALUE TO SHOW 0's
@@ -65,49 +66,51 @@ class GardenBed extends Component {
         <button onClick={(props) => this.addVeggie(props)}>
           Create Garden
         </button>
-        <div className="gardenBedBox">
-          <div className="gardenBedVeggie">
-            <img src={carrot} />
+        <container className="gardenBedBox">
+          <div>
+            <div className="gardenBedVeggie">
+              <img src={carrot} />
 
-            {Array(this.state.seedCount.carrot).fill(
-              <img src={carrot} alt="Carrot" />
-            )}
-          </div>
-          <div className="gardenBedVeggie">
-            <img src={bellPepper} />
-            {Array(this.state.seedCount.bellPepper).fill(
-              <img src={bellPepper} alt="Bell Pepper" />
-            )}
-          </div>
-          <div className="gardenBedVeggie">
-            <img src={lettuce} />
+              {Array(this.state.seedCount.carrot).fill(
+                <img src={carrot} alt="Carrot" />
+              )}
+            </div>
+            <div className="gardenBedVeggie">
+              <img src={bellPepper} />
+              {Array(this.state.seedCount.bellPepper).fill(
+                <img src={bellPepper} alt="Bell Pepper" />
+              )}
+            </div>
+            <div className="gardenBedVeggie">
+              <img src={lettuce} />
 
-            {Array(this.state.seedCount.lettuce).fill(
-              <img src={lettuce} alt="Lettuce" />
-            )}
-          </div>
-          <div className="gardenBedVeggie">
-            <img src={beans} />
+              {Array(this.state.seedCount.lettuce).fill(
+                <img src={lettuce} alt="Lettuce" />
+              )}
+            </div>
+            <div className="gardenBedVeggie">
+              <img src={beans} />
 
-            {Array(this.state.seedCount.beans).fill(
-              <img src={beans} alt="Beans" />
-            )}
-          </div>
-          <div className="gardenBedVeggie">
-            <img src={peas} />
+              {Array(this.state.seedCount.beans).fill(
+                <img src={beans} alt="Beans" />
+              )}
+            </div>
+            <div className="gardenBedVeggie">
+              <img src={peas} />
 
-            {Array(this.state.seedCount.peas).fill(
-              <img src={peas} alt="Peas" />
-            )}
-          </div>
-          <div className="gardenBedVeggie">
-            <img src={corn} />
+              {Array(this.state.seedCount.peas).fill(
+                <img src={peas} alt="Peas" />
+              )}
+            </div>
+            <div className="gardenBedVeggie">
+              <img src={corn} />
 
-            {Array(this.state.seedCount.corn).fill(
-              <img src={corn} alt="Corn" />
-            )}
+              {Array(this.state.seedCount.corn).fill(
+                <img src={corn} alt="Corn" />
+              )}
+            </div>
           </div>
-        </div>
+        </container>
       </div>
     );
   }

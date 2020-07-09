@@ -1,11 +1,14 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require("../modules/authentication-middleware");
 
 /**
  * GET ALL GARDENS SPECIFIC TO USER
  */
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   const userID = req.user.id;
   console.log(userID);
   console.log(req.user.id);
@@ -31,7 +34,7 @@ WHERE "user_id" = ${userID}
  * GET SPECIFIC USER GARDEN
  */
 
-router.get(`/:id`, (req, res) => {
+router.get(`/:id`, rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   console.log(req.params.id);
   let id = req.params.id;
@@ -56,7 +59,7 @@ router.get(`/:id`, (req, res) => {
 /**
  * POST USER GARDEN INTO DB
  */
-router.post("/create-garden", async (req, res, next) => {
+router.post("/create-garden", rejectUnauthenticated, async (req, res, next) => {
   const connection = await pool.connect();
   try {
     console.log(req.user.id);
@@ -135,7 +138,7 @@ router.post("/create-garden", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", rejectUnauthenticated, async (req, res) => {
   const connection = await pool.connect();
   console.log(req.params);
   userID = req.user.id;
@@ -166,7 +169,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   console.log(req.body.garden_bed_id);
   userID = req.user.id;
