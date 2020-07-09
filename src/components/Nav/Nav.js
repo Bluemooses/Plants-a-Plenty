@@ -20,13 +20,13 @@ const Nav = (props) => (
       {props.user.id && (
         <>
           <Link className="nav-link" to="/vegetable-descriptions">Vegetable Descriptions</Link>
-          <Link className="nav-link" to="/my-gardens">
+          <Link className="nav-link" to="/create-garden">
             Create Garden
           </Link>
           {/* <Link className="nav-link" to="/current-garden">
             Current Garden
           </Link> */}
-          <Link className="nav-link" to="/create-garden">
+          <Link className="nav-link" to="/my-gardens">
             My Gardens
           </Link>
         </>

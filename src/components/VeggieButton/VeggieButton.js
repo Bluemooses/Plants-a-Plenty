@@ -30,9 +30,6 @@ class VeggieButton extends Component {
 
               {/* Provides the image clicked which handles adding or removing vegetables by their type. */}
               <img
-                onClick={() => {
-                  this.countVeggie(payload);
-                }}
                 key={veggie.id}
                 height={50}
                 width={50}
@@ -40,6 +37,9 @@ class VeggieButton extends Component {
                 alt={veggie.type}
               ></img>
 
+              <button key={veggie.id} onClick={() => this.countVeggie(payload)}>
+                Add
+              </button>
               {/* Provides the remove button which will handle removing vegetables by their type */}
               <button
                 key={veggie.id}

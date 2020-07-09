@@ -51,10 +51,11 @@ img:active {
 }
 
 .gardenBedBox {
-  border-color: brown;
+  border-color: rgb(65, 48, 4);
 }
 
 .gardenBedVeggie {
   height: 40%;
   width: 40%;
+  align-content: flex-end;
 }

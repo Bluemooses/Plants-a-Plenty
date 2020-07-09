@@ -26,6 +26,13 @@ class CurrentGardenBed extends Component {
       garden_bed_id: nextProps.state.currentGardenBed.garden_bed_id,
     });
     console.log(this.state.currentBed);
+    this.forceUpdate();
+  }
+
+  componentDidUpdate(nextProps, prevState) {
+    if (prevState.seedCount !== this.state.seedCount) {
+      console.log("yo");
+    }
   }
 
   //SEND US THE CURRENT GARDEN BED INFORMATION SET MOST RECENT SEEDS TO CURRENT BED.
@@ -65,9 +72,11 @@ class CurrentGardenBed extends Component {
   };
 
   render() {
+    console.log();
     return (
       <div>
         <label>Garden Details</label>
+
         {this.state.currentBed.map((bed) => {
           let payload = {
             carrot: bed.carrot_seeds,
@@ -91,30 +100,69 @@ class CurrentGardenBed extends Component {
                   <li>Height: {bed.wood_height}</li>
                 </ul>
               </ul>
-              <label>Plants Selected</label>
+
               {!this.state.isEditing ? (
-                <ul>
-                  <li>Carrots: {payload.carrot}</li>
-                  <li>Lettuce: {payload.lettuce}</li>
-                  <li>Green Beans: {payload.beans}</li>
-                  <li>Peas: {payload.peas}</li>
-                  <li>Bell Peppers: {payload.bellPepper}</li>
-                  <li>Corn: {payload.corn}</li>
-                </ul>
+                <div>
+                  <label>Plants Selected</label>
+                  <ul>
+                    <li>Carrots: {payload.carrot}</li>
+                    <li>Lettuce: {payload.lettuce}</li>
+                    <li>Tomatoes: {payload.beans}</li>
+                    <li>Peas: {payload.peas}</li>
+                    <li>Bell Peppers: {payload.bellPepper}</li>
+                    <li>Corn: {payload.corn}</li>
+                  </ul>
+                </div>
               ) : (
-                <ul>
-                  <li>Carrots: {this.state.seedCount.carrot}</li>
-                  <li>Lettuce: {this.state.seedCount.lettuce}</li>
-                  <li>Green Beans: {this.state.seedCount.beans}</li>
-                  <li>Peas: {this.state.seedCount.peas}</li>
-                  <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
-                  <li>Corn: {this.state.seedCount.corn}</li>
-                </ul>
+                <div>
+                  <label>Please Edit Your Garden Bed</label>
+                  <div className="gardenBedBox">
+                    <div className="gardenBedVeggie">
+                      {Array(this.props.state.seedCount.carrot).fill(
+                        <img src={carrot} alt="Carrot" />
+                      )}
+                    </div>
+                    <div className="gardenBedVeggie">
+                      {Array(this.state.seedCount.bellPepper).fill(
+                        <img src={bellPepper} alt="Bell Pepper" />
+                      )}
+                    </div>
+                    <div className="gardenBedVeggie">
+                      {Array(this.state.seedCount.lettuce).fill(
+                        <img src={lettuce} alt="Lettuce" />
+                      )}
+                    </div>
+                    <div className="gardenBedVeggie">
+                      {Array(this.state.seedCount.beans).fill(
+                        <img src={beans} alt="Beans" />
+                      )}
+                    </div>
+                    <div className="gardenBedVeggie">
+                      {Array(this.state.seedCount.peas).fill(
+                        <img src={peas} alt="Peas" />
+                      )}
+                    </div>
+                    <div className="gardenBedVeggie">
+                      {Array(this.state.seedCount.corn).fill(
+                        <img src={corn} alt="Corn" />
+                      )}
+                    </div>
+                  </div>
+                  <ul>
+                    <li>Carrots: {this.state.seedCount.carrot}</li>
+                    <li>Lettuce: {this.state.seedCount.lettuce}</li>
+                    <li>Tomatoes: {this.state.seedCount.beans}</li>
+                    <li>Peas: {this.state.seedCount.peas}</li>
+                    <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
+                    <li>Corn: {this.state.seedCount.corn}</li>
+                  </ul>
+                </div>
               )}
+
               <button onClick={() => this.handleEdit(bed, payload)}>
                 {!this.state.isEditing ? "Edit Garden" : "Undo"}
               </button>
-              <button onClick={() => this.props.history.push("/create-garden")}>
+              <button onClick={() => this.props.history.push("/my-gardens")}>
                 Back to Gardens
               </button>
               <section className="veggieButtons">

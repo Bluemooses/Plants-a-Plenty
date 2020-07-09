@@ -44,35 +44,13 @@ class GardenComplete extends Component {
             <li>Carrot plants: {this.carrot}</li>
             <li>Bell Pepper plants: {this.bellPepper}</li>
             <li>Lettuce plants: {this.lettuce}</li>
-            <li>Bean plants: {this.beans}</li>
+            <li>Tomato plants: {this.beans}</li>
             <li>Pea plants: {this.pea}</li>
             <li>Corn plants: {this.corn}</li>
           </ul>
         </section>
 
-        {/* PROVIDE INFO FROM REDUCER ABOUT VEGETABLE SPACING */}
-        <section className="gardenList">
-          <label className="gardenLabel">Vegetable Spacing</label>
-
-          {this.props.state.veggies.map((veggie) => {
-            return (
-              <ul>
-                <label for="li" className="gardenLabel">
-                  {" "}
-                  {veggie.veggie_name}
-                </label>
-                <li>Column spacing: {veggie.seed_spacing} in.</li>
-                <li>Row spacing: {veggie.row_spacing} in.</li>
-                <li>
-                  Sq ft. per plant: {(veggie.sq_in_per_seed / 144).toFixed(2)}
-                </li>
-                <li>Sq in. per plant: {veggie.sq_in_per_seed}</li>
-              </ul>
-            );
-          })}
-        </section>
-
-        <button onClick={() => this.props.history.push("/create-garden")}>
+        <button onClick={() => this.props.history.push("/my-gardens")}>
           See Garden List
         </button>
 

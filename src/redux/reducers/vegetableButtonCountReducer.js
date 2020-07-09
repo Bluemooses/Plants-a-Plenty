@@ -30,7 +30,7 @@ const vegetableButtonCountReducer = (
         case "Peas":
           return { ...state, peas: state.peas + 1 };
 
-        case "Green Bean":
+        case "Tomato":
           return { ...state, beans: state.beans + 1 };
 
         case "Lettuce":
@@ -68,7 +68,7 @@ const vegetableButtonCountReducer = (
             return state;
           }
 
-        case "Green Bean":
+        case "Tomato":
           if (state.beans > 0) {
             return { ...state, beans: state.beans - 1 };
           } else {

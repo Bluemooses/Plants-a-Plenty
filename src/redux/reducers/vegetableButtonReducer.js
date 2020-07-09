@@ -10,7 +10,7 @@ const vegetableButtonReducer = (
     { img: carrot, id: 1, type: "Carrot" },
     { img: bellPepper, id: 2, type: "Bell Pepper" },
     { img: lettuce, id: 3, type: "Lettuce" },
-    { img: beans, id: 4, type: "Green Bean" },
+    { img: beans, id: 4, type: "Tomato" },
     { img: peas, id: 5, type: "Peas" },
     { img: corn, id: 6, type: "Corn" },
   ],

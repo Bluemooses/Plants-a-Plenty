@@ -57,7 +57,7 @@ class GardenBed extends Component {
           <li>Carrots: {this.state.seedCount.carrot}</li>
           <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
           <li>Lettuce: {this.state.seedCount.lettuce}</li>
-          <li>Beans: {this.state.seedCount.beans}</li>
+          <li>Tomato: {this.state.seedCount.beans}</li>
           <li>Peas: {this.state.seedCount.peas}</li>
           <li>Corn: {this.state.seedCount.corn}</li>
         </ul>
@@ -67,31 +67,42 @@ class GardenBed extends Component {
         </button>
         <div className="gardenBedBox">
           <div className="gardenBedVeggie">
+            <img src={carrot} />
+
             {Array(this.state.seedCount.carrot).fill(
               <img src={carrot} alt="Carrot" />
             )}
           </div>
           <div className="gardenBedVeggie">
+            <img src={bellPepper} />
             {Array(this.state.seedCount.bellPepper).fill(
               <img src={bellPepper} alt="Bell Pepper" />
             )}
           </div>
           <div className="gardenBedVeggie">
+            <img src={lettuce} />
+
             {Array(this.state.seedCount.lettuce).fill(
               <img src={lettuce} alt="Lettuce" />
             )}
           </div>
           <div className="gardenBedVeggie">
+            <img src={beans} />
+
             {Array(this.state.seedCount.beans).fill(
               <img src={beans} alt="Beans" />
             )}
           </div>
           <div className="gardenBedVeggie">
+            <img src={peas} />
+
             {Array(this.state.seedCount.peas).fill(
               <img src={peas} alt="Peas" />
             )}
           </div>
           <div className="gardenBedVeggie">
+            <img src={corn} />
+
             {Array(this.state.seedCount.corn).fill(
               <img src={corn} alt="Corn" />
             )}

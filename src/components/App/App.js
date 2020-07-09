@@ -64,7 +64,7 @@ class App extends Component {
             <ProtectedRoute exact path="/dimensions" component={InfoPage} />
             <ProtectedRoute
               exact
-              path="/create-garden"
+              path="/my-gardens"
               component={AllGardens}
             />
             <ProtectedRoute exact path="/edit-garden" component={EditPage} />
@@ -75,7 +75,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/my-gardens"
+              path="/create-garden"
               component={UserEntryPage}
             />
             <ProtectedRoute
