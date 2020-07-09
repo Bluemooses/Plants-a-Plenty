@@ -1,9 +1,9 @@
-import carrot from "../../images/carrot.png";
-import bellPepper from "../../images/bell-pepper.png";
-import lettuce from "../../images/lettuce.png";
-import beans from "../../images/beans.png";
-import peas from "../../images/peas.png";
-import corn from "../../images/corn.png";
+import carrot from "../../images/carrotSvg.svg";
+import bellPepper from "../../images/bellPepperSvg.svg";
+import lettuce from "../../images/lettuceSvg.svg";
+import beans from "../../images/tomatoSvg.svg";
+import peas from "../../images/peaSvg.svg";
+import corn from "../../images/cornSvg.svg";
 
 const vegetableButtonReducer = (
   state = [

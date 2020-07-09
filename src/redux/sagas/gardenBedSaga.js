@@ -67,8 +67,11 @@ function* updateSeeds(action) {
       `api/garden/${action.payload.garden_bed_id}`,
       action.payload
     );
+    let thisGardenBed = action.payload.garden_bed_id;
     console.log(action.payload.garden_bed_id);
-
+    yield put({ type: "GET_THIS_GARDEN_BED", payload: thisGardenBed });
+    console.log(action.payload);
+    // yield put({ type: "SET_UPDATED_GARDEN_BED", payload: action.payload });
     // yield put({ type: "SET_CURRENT_SEEDS", payload: action.payload });
   } catch (error) {
     console.log("CLIENT UPDATE ERR", error);

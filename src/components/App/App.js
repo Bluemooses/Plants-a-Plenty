@@ -17,7 +17,6 @@ import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
 import GardenBed from "../GardenBed/GardenBed";
-import UserGardens from "../UserGardens/UserGardens";
 import EditPage from "../EditPage/EditPage";
 
 import "./App.css";

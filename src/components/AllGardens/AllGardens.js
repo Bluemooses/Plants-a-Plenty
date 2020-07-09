@@ -7,7 +7,6 @@ class AllGardens extends Component {
     this.props.dispatch({
       type: "GET_GARDEN_BEDS",
     });
-    // const [latestGarden] = this.props.state.gardenBedReducer.slice(-1);
     this.forceUpdate();
   }
 
@@ -39,20 +38,18 @@ class AllGardens extends Component {
           return (
             <div>
               <ul>
-                <p className="userGardens" key={gardenbed.id}>
-                  <span>
-                    <Link
-                      onClick={() => this.goToGarden(gardenbed.garden_bed_id)}
-                    >
-                      Garden Bed: {gardenbed.id}
-                    </Link>
-                    <button
-                      onClick={() => this.dropGarden(gardenbed.garden_bed_id)}
-                    >
-                      Remove
-                    </button>
-                  </span>
-                </p>
+                <span>
+                  <Link
+                    onClick={() => this.goToGarden(gardenbed.garden_bed_id)}
+                  >
+                    Garden Bed: {gardenbed.id}
+                  </Link>
+                  <button
+                    onClick={() => this.dropGarden(gardenbed.garden_bed_id)}
+                  >
+                    Remove
+                  </button>
+                </span>
               </ul>
             </div>
           );

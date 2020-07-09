@@ -1,0 +1,60 @@
+.gardenBedBox img {
+  height: 3%;
+  width: 3%;
+  object-fit: contain;
+  display: inline-block;
+}
+.removeButton {
+  object-fit: contain;
+  background-color: #4caf50;
+  border: red;
+  color: darkviolet;
+  padding: 15px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px -10px;
+  border-radius: 60%;
+  height: 3px;
+  width: 2px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.removeButton:hover {
+  background-color: white;
+}
+
+.removeButton:active {
+  background-color: red;
+  color: black;
+}
+img:hover {
+  background-color: white;
+}
+img:active {
+  background-color: palevioletred;
+}
+
+/* img {
+  object-fit: contain;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  border: red;
+  border-radius: 40%;
+} */
+
+.beetButton {
+  height: 80p;
+}
+
+.gardenBedBox {
+  border-color: brown;
+}
+
+.gardenBedVeggie {
+  height: 40%;
+  width: 40%;
+}

@@ -3,6 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import VeggieButton from "../VeggieButton/VeggieButton";
 import "./CurrentGardenBed.css";
+import carrot from "../../images/carrotSvg.svg";
+import bellPepper from "../../images/bellPepperSvg.svg";
+import lettuce from "../../images/lettuceSvg.svg";
+import beans from "../../images/tomatoSvg.svg";
+import peas from "../../images/peaSvg.svg";
+import corn from "../../images/cornSvg.svg";
 
 class CurrentGardenBed extends Component {
   state = {
@@ -53,7 +59,9 @@ class CurrentGardenBed extends Component {
       isEditing: !this.state.isEditing,
     });
 
-    this.props.history.push("/create-garden");
+    // this.forceUpdate();
+
+    // this.props.history.push("/create-garden");
   };
 
   render() {

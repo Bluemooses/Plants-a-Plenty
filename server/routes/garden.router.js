@@ -196,8 +196,7 @@ router.put("/:id", (req, res) => {
     ])
     .then((result) => {
       console.log(result);
-      console.log("success");
-
+      // res.send(result.rows);
       res.sendStatus(200);
     })
     .catch((error) => {

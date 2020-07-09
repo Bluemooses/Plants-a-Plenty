@@ -9,6 +9,7 @@ function VeggieItem(props) {
     console.log("click");
   }
 
+  // 
   return (
     <div margin={"30px"}>
       {" "}

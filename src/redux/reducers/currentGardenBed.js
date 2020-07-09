@@ -4,6 +4,8 @@ const gardenBedReducer = (state = [], action) => {
       return action.payload;
     case "UNSET_GARDEN_ID":
       return [];
+    case "SET_UPDATED_GARDEN_BED":
+      return action.payload;
     default:
       return state;
   }

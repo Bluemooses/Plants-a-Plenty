@@ -10,6 +10,7 @@ class VeggieCard extends Component {
           className="veggieImage"
           width={"25%"}
           src={this.props.veggie.img}
+          alt={this.props.veggie.veggie_name}
         ></img>
         <h3>{this.props.veggie.veggie_name}</h3>
         <label htmlFor="ul">Details</label>

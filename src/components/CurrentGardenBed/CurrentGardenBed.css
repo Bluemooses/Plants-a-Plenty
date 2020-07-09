@@ -1,3 +1,10 @@
 .veggieButtons {
   display: flex;
 }
+
+.gardenBedBox {
+  border-color: brown;
+}
+
+.gardenBedVeggie {
+}
