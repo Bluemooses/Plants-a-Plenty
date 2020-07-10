@@ -61,6 +61,7 @@ function* deleteGardenBed(action) {
 
 function* updateSeeds(action) {
   console.log(action.payload);
+
   console.log(action.payload.garden_bed_id);
   try {
     yield axios.put(
@@ -78,12 +79,25 @@ function* updateSeeds(action) {
   }
 }
 
+function* resetDBSeeds(action) {
+  console.log(action.payload);
+  try {
+    let response = { payload: action.payload };
+    console.log(response);
+    yield axios.put(`api/garden/reset/${action.payload}`, response);
+    yield put({ type: "GET_THIS_GARDEN_BED", payload: action.payload });
+  } catch (error) {
+    console.log("CLIENT RESET ERR", error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest("CREATE_GARDEN_BED", createGardenBed);
   yield takeLatest("GET_GARDEN_BEDS", getGardenBed);
   yield takeLatest("GET_THIS_GARDEN_BED", getThisGardenBed);
   yield takeLatest("DELETE_USER_GARDEN", deleteGardenBed);
   yield takeLatest("UPDATE_SEEDS", updateSeeds);
+  yield takeLatest("RESET_DB_SEEDS", resetDBSeeds);
 }
 
 export default userSaga;

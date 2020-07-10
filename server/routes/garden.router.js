@@ -210,10 +210,9 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
 
 router.put("/reset/:id", rejectUnauthenticated, (req, res) => {
   console.log(req.body);
-  console.log(req.body.garden_bed_id);
-  userID = req.user.id;
+  console.log(req.body.response);
 
-  seedValues = [0, 0, 0, 0, 0, 0, req.body];
+  seedValues = [0, 0, 0, 0, 0, 0, req.body.payload];
 
   const sqlUpdateSeeds = `UPDATE "Seeds" 
     SET ("bell_pepper_seeds", "carrot_seeds", "greenbean_seeds", "lettuce_seeds", "corn_seeds", "pea_seeds") = ($1, $2, $3, $4, $5, $6) WHERE "garden_bed_id"=$7;`;

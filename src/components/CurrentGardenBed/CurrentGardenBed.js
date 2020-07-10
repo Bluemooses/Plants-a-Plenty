@@ -74,6 +74,9 @@ class CurrentGardenBed extends Component {
   handleGardenBedReset = (bed) => {
     console.log("click");
     this.props.dispatch({ type: "RESET_DB_SEEDS", payload: bed.garden_bed_id });
+    this.setState({
+      isEditing: !this.state.isEditing,
+    });
   };
 
   render() {
