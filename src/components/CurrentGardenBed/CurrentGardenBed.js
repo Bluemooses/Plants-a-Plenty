@@ -9,6 +9,7 @@ import lettuce from "../../images/lettuceSvg.svg";
 import beans from "../../images/tomatoSvg.svg";
 import peas from "../../images/peaSvg.svg";
 import corn from "../../images/cornSvg.svg";
+import { BlueButton } from "../Buttons/Button";
 
 class CurrentGardenBed extends Component {
   state = {
@@ -159,23 +160,25 @@ class CurrentGardenBed extends Component {
                 </div>
               )}
 
-              <button onClick={() => this.handleEdit(bed, payload)}>
+              <BlueButton onClick={() => this.handleEdit(bed, payload)}>
                 {!this.state.isEditing ? "Edit Garden" : "Undo"}
-              </button>
-              <button onClick={() => this.props.history.push("/my-gardens")}>
+              </BlueButton>
+              <BlueButton
+                onClick={() => this.props.history.push("/my-gardens")}
+              >
                 Back to Gardens
-              </button>
-              <section className="veggieButtons">
+              </BlueButton>
+              <section className="veggieBlueButtons">
                 {this.state.isEditing ? (
                   <div>
                     <VeggieButton />
-                    <button
+                    <BlueButton
                       onClick={() => {
                         this.handleGardenBedChanges(bed, payload);
                       }}
                     >
                       Submit Changes
-                    </button>
+                    </BlueButton>
                   </div>
                 ) : (
                   <div></div>

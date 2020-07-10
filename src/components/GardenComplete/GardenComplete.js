@@ -7,6 +7,7 @@ import "./GardenComplete.css";
 // import beansImg from "../../images/beans.png";
 // import peasImg from "../../images/peas.png";
 import cornImg from "../../images/corn.png";
+import { BlueButton } from "../Buttons/Button";
 class GardenComplete extends Component {
   // DEFINES MOST CURRENT GARDEN SEED COUNTS
   carrot = this.props.state.seedCount.carrot;
@@ -50,13 +51,9 @@ class GardenComplete extends Component {
           </ul>
         </section>
 
-        <button onClick={() => this.props.history.push("/my-gardens")}>
+        <BlueButton onClick={() => this.props.history.push("/my-gardens")}>
           See Garden List
-        </button>
-
-        <section className="gardenImages">
-          <img src={cornImg} alt="Corn"></img>
-        </section>
+        </BlueButton>
       </div>
     );
   }

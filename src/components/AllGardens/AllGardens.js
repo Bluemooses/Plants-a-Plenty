@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import { RemoveButton } from "../Buttons/Button";
 
 class AllGardens extends Component {
   componentDidMount() {
@@ -44,11 +45,11 @@ class AllGardens extends Component {
                   >
                     Garden Bed: {gardenbed.id}
                   </Link>
-                  <button
+                  <RemoveButton
                     onClick={() => this.dropGarden(gardenbed.garden_bed_id)}
                   >
                     Remove
-                  </button>
+                  </RemoveButton>
                 </span>
               </ul>
             </div>
