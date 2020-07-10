@@ -208,4 +208,34 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.put("/reset/:id", rejectUnauthenticated, (req, res) => {
+  console.log(req.body);
+  console.log(req.body.garden_bed_id);
+  userID = req.user.id;
+
+  seedValues = [0, 0, 0, 0, 0, 0, req.body];
+
+  const sqlUpdateSeeds = `UPDATE "Seeds" 
+    SET ("bell_pepper_seeds", "carrot_seeds", "greenbean_seeds", "lettuce_seeds", "corn_seeds", "pea_seeds") = ($1, $2, $3, $4, $5, $6) WHERE "garden_bed_id"=$7;`;
+
+  pool
+    .query(sqlUpdateSeeds, [
+      seedValues[0],
+      seedValues[1],
+      seedValues[2],
+      seedValues[3],
+      seedValues[4],
+      seedValues[5],
+      seedValues[6],
+    ])
+    .then((result) => {
+      console.log(result);
+      // res.send(result.rows);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER PUT", error);
+      res.sendStatus(500);
+    });
+});
 module.exports = router;
