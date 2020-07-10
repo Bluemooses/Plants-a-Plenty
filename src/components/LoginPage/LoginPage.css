@@ -1,0 +1,16 @@
+form input {
+  width: 60%;
+  color: white;
+  background-color: black;
+}
+
+h1 {
+  text-align: center;
+  padding-right: 30%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+form label #text{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  
+}

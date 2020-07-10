@@ -1,15 +1,28 @@
 .gardenIn {
-  background-color: antiquewhite;
+  background-color: white;
 }
 .gardenIn:hover {
   background-color: firebrick;
 }
 
-::placeholder{
-    color: goldenrod;
+::placeholder {
+  color: goldenrod;
 }
 
-.bop{
-    color: red;
-    background-color: goldenrod;
+.bop {
+  color: red;
+  background-color: goldenrod;
 }
+
+.gardeniestOfLists {
+  background-color: green;
+  width: 20%;
+  color: white;
+  margin-left: 0.5%;
+}
+
+.gardeniestOfLists:hover{
+  background-color: tomato;
+}
+
+

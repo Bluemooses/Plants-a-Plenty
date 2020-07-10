@@ -2,9 +2,44 @@
   display: flex;
 }
 
-.gardenBedBox {
-  border-color: brown;
+.materialList {
+  display: inline-block;
+  background-color: green;
+  align-content: center;
+  color: white;
+  margin-left: 0.5%;
+  border: 1px, solid;
+  border-radius: 7px;
+  width: 20%;
+  list-style: none;
+}
+/* .materialList li {
+  list-style: none;
+  display: inline-block;
+} */
+
+.plantList li {
+  list-style: none;
 }
 
-.gardenBedVeggie {
+.plantList {
+  background-color: green;
+  margin-left: 0.5%;
+  align-content: center;
+  border: 1px, solid;
+  border-radius: 7px;
+  color: white;
+  width: 20%;
+  list-style: none;
+  margin-bottom: 5%;
+}
+
+.gardenH2 {
+  color: white;
+  margin-left: 0.5%;
+  margin-bottom: .01%;
+  background-color: rgb(3, 231, 3);
+  width: 20%;
+  border: 1px, solid;
+  border-radius: 10px;
 }

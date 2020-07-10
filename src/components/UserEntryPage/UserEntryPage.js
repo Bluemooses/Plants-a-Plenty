@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import VeggieButton from "../VeggieButton/VeggieButton";
 import GardenBed from "../GardenBed/GardenBed";
 import InputForm from "../InputForm/InputForm";
+import "./UserEntryPage.css";
 
 function DescriptionCard(props) {
   // state = {
@@ -13,8 +14,10 @@ function DescriptionCard(props) {
     return (
       <div>
         {InputForm(props.state)}
-        <VeggieButton />
         <GardenBed />
+        <div className="vegetableButtonWrapper">
+          <VeggieButton />
+        </div>
       </div>
     );
   }

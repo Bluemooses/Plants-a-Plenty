@@ -3,6 +3,8 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
 import { withTheme } from "emotion-theming";
 
+const StylizedButtons 
+
 const RemoveButton = withStyles({
   root: {
     background: "red",

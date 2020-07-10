@@ -11,6 +11,7 @@ const StyledButton = withStyles({
     height: "50%",
     width: "50",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    margin: ".5%",
   },
 })(Button);
 const RemoveButton = withStyles({
@@ -21,6 +22,7 @@ const RemoveButton = withStyles({
     height: "50%",
     width: "50",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    margin: ".5%",
   },
 })(Button);
 const BlueButton = withStyles({
@@ -31,7 +33,19 @@ const BlueButton = withStyles({
     height: "50%",
     width: "50",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    margin: ".5%",
+  },
+})(Button);
+const YellowButton = withStyles({
+  root: {
+    background: "yellow",
+    borderRadius: 22,
+    color: "black",
+    height: "50%",
+    width: "50",
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    margin: ".5%",
   },
 })(Button);
 
-export { StyledButton, RemoveButton, BlueButton };
+export { StyledButton, RemoveButton, BlueButton, YellowButton };

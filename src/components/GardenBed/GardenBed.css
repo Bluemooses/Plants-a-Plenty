@@ -3,6 +3,7 @@
   width: 3%;
   object-fit: contain;
   display: inline-block;
+  flex-direction: row-reverse;
 }
 .removeButton {
   object-fit: contain;
@@ -48,10 +49,6 @@ img:active {
 
 .beetButton {
   height: 80p;
-}
-
-.gardenBedBox {
-  border-color: rgb(65, 48, 4);
 }
 
 .gardenBedVeggie {

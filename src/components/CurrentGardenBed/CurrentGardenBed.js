@@ -9,7 +9,10 @@ import lettuce from "../../images/lettuceSvg.svg";
 import beans from "../../images/tomatoSvg.svg";
 import peas from "../../images/peaSvg.svg";
 import corn from "../../images/cornSvg.svg";
-import { BlueButton } from "../Buttons/Button";
+import { BlueButton, RemoveButton } from "../Buttons/Button";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Paper from "@material-ui/core/Paper";
 
 class CurrentGardenBed extends Component {
   state = {
@@ -66,18 +69,18 @@ class CurrentGardenBed extends Component {
     this.setState({
       isEditing: !this.state.isEditing,
     });
+  };
 
-    // this.forceUpdate();
-
-    // this.props.history.push("/create-garden");
+  handleGardenBedReset = (bed) => {
+    console.log("click");
+    this.props.dispatch({ type: "RESET_DB_SEEDS", payload: bed.garden_bed_id });
   };
 
   render() {
     console.log();
     return (
       <div>
-        <label>Garden Details</label>
-
+        <h2 className="gardenH2">Garden Details</h2>
         {this.state.currentBed.map((bed) => {
           let payload = {
             carrot: bed.carrot_seeds,
@@ -89,34 +92,54 @@ class CurrentGardenBed extends Component {
           };
           return (
             <div>
-              <ul>
-                <label>Soil Required</label>
+              <div className="materialList">
                 <ul>
-                  <li>{bed.soil} cuYd.</li>
+                  <label>Soil Required</label>
+                  <ul>
+                    <li>{bed.soil} cuYd.</li>
+                  </ul>
+                  <label>Bed Dimensions in Ft</label>
+                  <ul>
+                    <li>Length: {bed.wood_length} </li>
+                    <li>Width: {bed.wood_width}</li>
+                    <li>Height: {bed.wood_height}</li>
+                  </ul>
                 </ul>
-                <label>Bed Dimensions in Ft</label>
-                <ul>
-                  <li>Length: {bed.wood_length} </li>
-                  <li>Width: {bed.wood_width}</li>
-                  <li>Height: {bed.wood_height}</li>
-                </ul>
-              </ul>
+              </div>
 
               {!this.state.isEditing ? (
-                <div>
-                  <label>Plants Selected</label>
-                  <ul>
-                    <li>Carrots: {payload.carrot}</li>
-                    <li>Lettuce: {payload.lettuce}</li>
-                    <li>Tomatoes: {payload.beans}</li>
-                    <li>Peas: {payload.peas}</li>
-                    <li>Bell Peppers: {payload.bellPepper}</li>
-                    <li>Corn: {payload.corn}</li>
-                  </ul>
-                </div>
+                <container className="plantContainer">
+                  <div className="plantList">
+                    <label>Theoretical Yield</label>
+                    <ul>
+                      <ul>
+                        <li>
+                          Carrots: {Number(payload.carrot * 1.5).toFixed(2)}{" "}
+                          lbs.
+                        </li>
+                        <li>
+                          Bell Peppers:{" "}
+                          {Number(payload.bellPepper * 1.25).toFixed(2)} lbs.
+                        </li>
+                        <li>
+                          Lettuce: {Number(payload.lettuce * 1).toFixed(2)} lbs.
+                        </li>
+                        <li>
+                          Tomatoes: {Number(payload.beans * 8).toFixed(2)} lbs.
+                        </li>
+                        <li>
+                          Peas: {Number(payload.peas * 0.66).toFixed(2)} lbs.
+                        </li>
+                        <li>
+                          Corn: {Number(payload.corn * (1.2).toFixed(2))} lbs.
+                        </li>
+                      </ul>
+                    </ul>
+                  </div>
+                </container>
               ) : (
                 <div>
-                  <label>Please Edit Your Garden Bed</label>
+                  <h2 className="gardenH2">Please Edit Your Garden Bed</h2>
                   <div className="gardenBedBox">
                     <div className="gardenBedVeggie">
                       {Array(this.props.state.seedCount.carrot).fill(
@@ -149,14 +172,16 @@ class CurrentGardenBed extends Component {
                       )}
                     </div>
                   </div>
-                  <ul>
-                    <li>Carrots: {this.state.seedCount.carrot}</li>
-                    <li>Lettuce: {this.state.seedCount.lettuce}</li>
-                    <li>Tomatoes: {this.state.seedCount.beans}</li>
-                    <li>Peas: {this.state.seedCount.peas}</li>
-                    <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
-                    <li>Corn: {this.state.seedCount.corn}</li>
-                  </ul>
+                  <div className="plantList">
+                    <ul>
+                      <li>Carrots: {this.state.seedCount.carrot}</li>
+                      <li>Lettuce: {this.state.seedCount.lettuce}</li>
+                      <li>Tomatoes: {this.state.seedCount.beans}</li>
+                      <li>Peas: {this.state.seedCount.peas}</li>
+                      <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
+                      <li>Corn: {this.state.seedCount.corn}</li>
+                    </ul>
+                  </div>
                 </div>
               )}
 
@@ -168,10 +193,12 @@ class CurrentGardenBed extends Component {
               >
                 Back to Gardens
               </BlueButton>
+              {/* <RemoveButton onClick={() => this.handleResetGardenBed(bed)}>
+                Reset Garden
+              </RemoveButton> */}
               <section className="veggieBlueButtons">
                 {this.state.isEditing ? (
                   <div>
-                    <VeggieButton />
                     <BlueButton
                       onClick={() => {
                         this.handleGardenBedChanges(bed, payload);
@@ -179,6 +206,14 @@ class CurrentGardenBed extends Component {
                     >
                       Submit Changes
                     </BlueButton>
+                    <RemoveButton
+                      onClick={() => {
+                        this.handleGardenBedReset(bed, payload);
+                      }}
+                    >
+                      Reset Garden Veggies
+                    </RemoveButton>
+                    <VeggieButton />
                   </div>
                 ) : (
                   <div></div>

@@ -1,0 +1,14 @@
+.welcomeCard {
+  color: white;
+  background-color: black;
+  width: 35%;
+  padding-top: 10%;
+  padding: 0.2%;
+  margin: auto;
+  display: flexbox;
+  justify-content: center;
+  border: 1px solid;
+}
+.welcomeCard li {
+  list-style: none;
+}

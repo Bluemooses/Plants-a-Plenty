@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Input } from "@material-ui/core";
 import "./InputForm.css";
+import { BlueButton } from "../Buttons/Button";
 
 function InputForm(props) {
   // DEFINE CONSTS
@@ -64,15 +65,15 @@ function InputForm(props) {
         }}
       />{" "}
       {/* DISPATCH USER DIMENSIONS */}
-      <button
+      <BlueButton
         onClick={() => {
           dispatch({ type: "SET_MATERIALS", payload: dataObject });
         }}
       >
         Submit Dimensions
-      </button>
+      </BlueButton>
       {/* SHOW DATA ON DOM */}
-      <section>
+      <section className="gardeniestOfLists">
         <p value={0}>Cubic Feet: {cuFt}</p>
         <p>Square Feet: {sqFt}</p>
         <p>Dirt Required: {cuYards} cu. Yards</p>

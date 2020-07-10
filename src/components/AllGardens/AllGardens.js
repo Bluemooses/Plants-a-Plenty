@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { RemoveButton } from "../Buttons/Button";
+import { RemoveButton, StyledButton } from "../Buttons/Button";
+import "./AllGarden.css";
 
 class AllGardens extends Component {
   componentDidMount() {
@@ -32,7 +33,7 @@ class AllGardens extends Component {
     return (
       <div>
         <h3>Click Garden Bed to See and Edit Details</h3>
-        <label>Your Gardens</label>
+        <h1>Your Gardens</h1>
 
         {/* PROVIDE LIST OF USER GARDEN BEDS */}
         {this.props.state.gardenBedReducer.map((gardenbed) => {
@@ -40,11 +41,12 @@ class AllGardens extends Component {
             <div>
               <ul>
                 <span>
-                  <Link
+                  <h2 className="allGardenH2">Garden Bed: {gardenbed.id}</h2>
+                  <StyledButton
                     onClick={() => this.goToGarden(gardenbed.garden_bed_id)}
                   >
-                    Garden Bed: {gardenbed.id}
-                  </Link>
+                    Go to Garden
+                  </StyledButton>
                   <RemoveButton
                     onClick={() => this.dropGarden(gardenbed.garden_bed_id)}
                   >

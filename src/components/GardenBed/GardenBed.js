@@ -10,6 +10,7 @@ import lettuce from "../../images/lettuceSvg.svg";
 import beans from "../../images/tomatoSvg.svg";
 import peas from "../../images/peaSvg.svg";
 import corn from "../../images/cornSvg.svg";
+import { BlueButton } from "../Buttons/Button";
 class GardenBed extends Component {
   state = {
     veggies: [],
@@ -54,18 +55,35 @@ class GardenBed extends Component {
   render() {
     return (
       <div>
-        <ul>
-          <li>Carrots: {this.state.seedCount.carrot}</li>
-          <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
-          <li>Lettuce: {this.state.seedCount.lettuce}</li>
-          <li>Tomato: {this.state.seedCount.beans}</li>
-          <li>Peas: {this.state.seedCount.peas}</li>
-          <li>Corn: {this.state.seedCount.corn}</li>
-        </ul>
-
-        <button onClick={(props) => this.addVeggie(props)}>
+        <div className="gardeniestOfLists">
+          <h2>Theoretical Yields</h2>
+          <ul>
+            <li>
+              Carrots: {Number(this.state.seedCount.carrot * 1.5).toFixed(2)}{" "}
+              lbs.
+            </li>
+            <li>
+              Bell Peppers:{" "}
+              {Number(this.state.seedCount.bellPepper * 1.25).toFixed(2)} lbs.
+            </li>
+            <li>
+              Lettuce: {Number(this.state.seedCount.lettuce * 1).toFixed(2)}{" "}
+              lbs.
+            </li>
+            <li>
+              Tomatoes: {Number(this.state.seedCount.beans * 8).toFixed(2)} lbs.
+            </li>
+            <li>
+              Peas: {Number(this.state.seedCount.peas * 0.66).toFixed(2)} lbs.
+            </li>
+            <li>
+              Corn: {Number(this.state.seedCount.corn * 1.2).toFixed(2)} lbs.
+            </li>
+          </ul>
+        </div>
+        <BlueButton onClick={(props) => this.addVeggie(props)}>
           Create Garden
-        </button>
+        </BlueButton>
         <container className="gardenBedBox">
           <div>
             <div className="gardenBedVeggie">
