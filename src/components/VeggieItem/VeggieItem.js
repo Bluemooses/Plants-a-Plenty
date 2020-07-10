@@ -3,15 +3,17 @@ import { connect } from "react-redux";
 import VeggieCard from "../VeggieCard/VeggieCard";
 import Popup from "reactjs-popup";
 import "./VeggieItem.css";
+import { Card } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 function VeggieItem(props) {
   function goToVeggie() {
     console.log("click");
   }
 
-  // 
+  //
   return (
-    <div margin={"30px"}>
+    <div className="veggieWrapper">
       {" "}
       <Popup
         className="popUp"
@@ -20,13 +22,14 @@ function VeggieItem(props) {
         width={"125%"}
         closeOnDocumentClick
         trigger={
-          <img
-            width={"25%"}
-            className="veggieImage"
-            onClick={() => goToVeggie()}
-            src={props.veggie.img}
-            alt={props.veggies.key}
-          />
+          <div className="flexVeg">
+            <img
+              className="veggieImage"
+              onClick={() => goToVeggie()}
+              src={props.veggie.img}
+              alt={props.veggies.key}
+            />
+          </div>
         }
         modal
       >
