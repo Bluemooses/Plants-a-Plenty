@@ -15,7 +15,7 @@ const UserPage = (props) => (
       </h2>
       <label>Tools Required:</label>
       <ul>
-        <li>Drill</li>
+        <li>Hammer</li>
         <li>Screws</li>
         <li>Shovel</li>
       </ul>

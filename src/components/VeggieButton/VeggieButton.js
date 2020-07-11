@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { withStyles, Container } from "@material-ui/core";
 import { StyledButton, RemoveButton } from "../Buttons/Button";
-
+import "./VeggieButtonStyles.css";
 class VeggieButton extends Component {
   //   Dispatches payload object created from map.
   countVeggie(payload) {
@@ -16,7 +16,7 @@ class VeggieButton extends Component {
 
   render() {
     return (
-      <div>
+      <div className="veggieButtons">
         {/* Mapping through vegetable images and targeting their id */}
         {this.props.vegImages.map((veggie) => {
           let payload = {
@@ -48,6 +48,7 @@ class VeggieButton extends Component {
               </StyledButton>
               {/* Provides the remove button which will handle removing vegetables by their type */}
               <RemoveButton
+                className="redButton"
                 key={veggie.id}
                 onClick={() =>
                   this.props.dispatch({

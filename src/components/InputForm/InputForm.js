@@ -32,6 +32,7 @@ function InputForm(props) {
 
   return (
     <div>
+      <h2>One Veggie = One Foot Row</h2>
       {/* INPUT COLLECTOR */}
       <Input
         className="gardenIn"

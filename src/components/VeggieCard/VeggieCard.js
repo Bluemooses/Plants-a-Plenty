@@ -30,7 +30,7 @@ class VeggieCard extends Component {
             <li>When to Plant: {this.props.veggie.timing}</li>
             <li>Method: Seed in Ground</li>
           </ul>
-          <label>Theoretical Yield</label>
+          <label>Theoretical Yield (annum)</label>
           <ul>
             <li>One foot row: {this.props.veggie.yield} lbs.</li>
           </ul>

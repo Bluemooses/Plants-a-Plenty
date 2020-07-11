@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import VeggieItem from "../VeggieItem/VeggieItem";
-import Grid from "@material-ui/core/Grid";
+import GridList from "@material-ui/core/Grid";
 
 function VeggieDescriptions(props) {
   return (
@@ -9,9 +9,9 @@ function VeggieDescriptions(props) {
       <h2>Click Image For More Information</h2>
       {props.veggies.map((veggie, id) => {
         return (
-          <Grid>
+          <GridList cellHeight={160}>
             <VeggieItem key={id} veggie={veggie} />{" "}
-          </Grid>
+          </GridList>
         );
       })}
     </div>

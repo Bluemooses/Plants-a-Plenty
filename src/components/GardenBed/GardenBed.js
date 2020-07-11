@@ -56,7 +56,7 @@ class GardenBed extends Component {
     return (
       <div>
         <div className="gardeniestOfLists">
-          <h2>Theoretical Yields</h2>
+          <h2>Theoretical Yields (annum)</h2>
           <ul>
             <li>
               Carrots: {Number(this.state.seedCount.carrot * 1.5).toFixed(2)}{" "}

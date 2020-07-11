@@ -9,7 +9,12 @@ import lettuce from "../../images/lettuceSvg.svg";
 import beans from "../../images/tomatoSvg.svg";
 import peas from "../../images/peaSvg.svg";
 import corn from "../../images/cornSvg.svg";
-import { BlueButton, RemoveButton } from "../Buttons/Button";
+import {
+  BlueButton,
+  RemoveButton,
+  YellowButton,
+  StyledButton,
+} from "../Buttons/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Paper from "@material-ui/core/Paper";
@@ -177,12 +182,28 @@ class CurrentGardenBed extends Component {
                   </div>
                   <div className="plantList">
                     <ul>
-                      <li>Carrots: {this.state.seedCount.carrot}</li>
-                      <li>Lettuce: {this.state.seedCount.lettuce}</li>
-                      <li>Tomatoes: {this.state.seedCount.beans}</li>
-                      <li>Peas: {this.state.seedCount.peas}</li>
-                      <li>Bell Peppers: {this.state.seedCount.bellPepper}</li>
-                      <li>Corn: {this.state.seedCount.corn}</li>
+                      <li>
+                        Carrots:{" "}
+                        {Number(this.state.seedCount.carrot).toFixed(2)}
+                      </li>
+                      <li>
+                        Lettuce:{" "}
+                        {Number(this.state.seedCount.lettuce).toFixed(2)}
+                      </li>
+                      <li>
+                        Tomatoes:{" "}
+                        {Number(this.state.seedCount.beans).toFixed(2)}
+                      </li>
+                      <li>
+                        Peas: {Number(this.state.seedCount.peas).toFixed(2)}
+                      </li>
+                      <li>
+                        Bell Peppers:{" "}
+                        {Number(this.state.seedCount.bellPepper).toFixed(2)}
+                      </li>
+                      <li>
+                        Corn: {Number(this.state.seedCount.corn).toFixed(2)}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -196,19 +217,26 @@ class CurrentGardenBed extends Component {
               >
                 Back to Gardens
               </BlueButton>
+              <YellowButton
+                onClick={() =>
+                  this.props.history.push("/vegetable-descriptions")
+                }
+              >
+                Vegetable Descriptions
+              </YellowButton>
               {/* <RemoveButton onClick={() => this.handleResetGardenBed(bed)}>
                 Reset Garden
               </RemoveButton> */}
               <section className="veggieBlueButtons">
                 {this.state.isEditing ? (
                   <div>
-                    <BlueButton
+                    <StyledButton
                       onClick={() => {
                         this.handleGardenBedChanges(bed, payload);
                       }}
                     >
                       Submit Changes
-                    </BlueButton>
+                    </StyledButton>
                     <RemoveButton
                       onClick={() => {
                         this.handleGardenBedReset(bed, payload);

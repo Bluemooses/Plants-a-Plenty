@@ -1,0 +1,9 @@
+.button-label {
+  color: white;
+}
+
+.veggieButtons {
+  display: inline-block;
+}
+.veggieButtons .redButton {
+  margin-left: -1.5%}
