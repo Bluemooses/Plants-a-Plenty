@@ -3,6 +3,7 @@ body {
   margin: 0px;
   background-image: url(../../images/tree.jpg);
   background-size: 100%;
+  opacity: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

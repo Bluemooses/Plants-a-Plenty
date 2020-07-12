@@ -5,18 +5,18 @@ import { withTheme } from "emotion-theming";
 
 const StyledButton = withStyles({
   root: {
-    background: "green",
+    background: "#486f27",
     borderRadius: 22,
     color: "white",
     height: "50%",
-    width: "50",
+    width: "",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     margin: ".5%",
   },
 })(Button);
 const RemoveButton = withStyles({
   root: {
-    background: "red",
+    background: "#ff1744",
     borderRadius: 22,
     color: withTheme,
     height: "50%",
@@ -27,9 +27,9 @@ const RemoveButton = withStyles({
 })(Button);
 const BlueButton = withStyles({
   root: {
-    background: "blue",
+    background: "#482880",
     borderRadius: 22,
-    color: withTheme,
+    color: "ff9800",
     height: "50%",
     width: "50",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
@@ -38,7 +38,7 @@ const BlueButton = withStyles({
 })(Button);
 const YellowButton = withStyles({
   root: {
-    background: "yellow",
+    background: "#b2a429",
     borderRadius: 22,
     color: "black",
     height: "50%",

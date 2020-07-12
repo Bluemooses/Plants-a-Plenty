@@ -24,6 +24,19 @@ class GardenComplete extends Component {
         {/* HEADERS */}
         <h2>Garden Created!</h2>
 
+        {/* VEGETABLES CHOSEN AND THEIR AMOUNTS */}
+        <section className="gardenList">
+          <label className="gardenLabel">Vegetables chosen</label>
+          <ul>
+            <li>Carrot plants: {this.carrot}</li>
+            <li>Bell Pepper plants: {this.bellPepper}</li>
+            <li>Lettuce plants: {this.lettuce}</li>
+            <li>Tomato plants: {this.beans}</li>
+            <li>Pea plants: {this.pea}</li>
+            <li>Corn plants: {this.corn}</li>
+          </ul>
+        </section>
+
         {/* LIST OF MATERIALS NEEDED */}
         <section className="gardenList">
           <label for="li" className="gardenLabel">
@@ -36,19 +49,6 @@ class GardenComplete extends Component {
           </li>
           <li>Side Board Length: {this.material.length} ft.</li>
           <li>End Board Length: {this.material.width} ft.</li>
-        </section>
-
-        {/* VEGETABLES CHOSEN AND THEIR AMOUNTS */}
-        <section className="gardenList">
-          <label className="gardenLabel">Vegetables chosen</label>
-          <ul>
-            <li>Carrot plants: {this.carrot}</li>
-            <li>Bell Pepper plants: {this.bellPepper}</li>
-            <li>Lettuce plants: {this.lettuce}</li>
-            <li>Tomato plants: {this.beans}</li>
-            <li>Pea plants: {this.pea}</li>
-            <li>Corn plants: {this.corn}</li>
-          </ul>
         </section>
 
         <BlueButton onClick={() => this.props.history.push("/my-gardens")}>

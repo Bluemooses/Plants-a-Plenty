@@ -180,32 +180,56 @@ class CurrentGardenBed extends Component {
                       )}
                     </div>
                   </div>
-                  <div className="plantList">
-                    <ul>
-                      <li>
-                        Carrots:{" "}
-                        {Number(this.state.seedCount.carrot).toFixed(2)}
-                      </li>
-                      <li>
-                        Lettuce:{" "}
-                        {Number(this.state.seedCount.lettuce).toFixed(2)}
-                      </li>
-                      <li>
-                        Tomatoes:{" "}
-                        {Number(this.state.seedCount.beans).toFixed(2)}
-                      </li>
-                      <li>
-                        Peas: {Number(this.state.seedCount.peas).toFixed(2)}
-                      </li>
-                      <li>
-                        Bell Peppers:{" "}
-                        {Number(this.state.seedCount.bellPepper).toFixed(2)}
-                      </li>
-                      <li>
-                        Corn: {Number(this.state.seedCount.corn).toFixed(2)}
-                      </li>
-                    </ul>
-                  </div>
+
+                  <container className="plantContainer2">
+                    <div className="plantList2">
+                      <label>Theoretical Yield</label>
+                      <ul>
+                        <ul>
+                          <li>
+                            Carrots:{" "}
+                            {Number(this.state.seedCount.carrot * 1.5).toFixed(
+                              2
+                            )}{" "}
+                            lbs.
+                          </li>
+                          <li>
+                            Bell Peppers:{" "}
+                            {Number(
+                              this.state.seedCount.bellPepper * 1.25
+                            ).toFixed(2)}{" "}
+                            lbs.
+                          </li>
+                          <li>
+                            Lettuce:{" "}
+                            {Number(this.state.seedCount.lettuce * 1).toFixed(
+                              2
+                            )}{" "}
+                            lbs.
+                          </li>
+                          <li>
+                            Tomatoes:{" "}
+                            {Number(this.state.seedCount.beans * 8).toFixed(2)}{" "}
+                            lbs.
+                          </li>
+                          <li>
+                            Peas:{" "}
+                            {Number(this.state.seedCount.peas * 0.66).toFixed(
+                              2
+                            )}{" "}
+                            lbs.
+                          </li>
+                          <li>
+                            Corn:{" "}
+                            {Number(
+                              this.state.seedCount.corn * (1.2).toFixed(2)
+                            )}{" "}
+                            lbs.
+                          </li>
+                        </ul>
+                      </ul>
+                    </div>
+                  </container>
                 </div>
               )}
 

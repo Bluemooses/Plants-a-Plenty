@@ -5,6 +5,9 @@
   display: inline-block;
   flex-direction: row-reverse;
 }
+/* .gardenBedBox{
+  background-color: brown;
+} */
 .removeButton {
   object-fit: contain;
   background-color: #4caf50;
@@ -53,6 +56,7 @@ img:active {
 
 .gardenBedVeggie {
   height: 40%;
-  width: 40%;
+  width: 50%;
   align-content: flex-end;
+  background-color: rgb(133, 79, 43);
 }
