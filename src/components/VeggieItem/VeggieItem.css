@@ -24,4 +24,5 @@ body {
   display: inline-block;
   height: 80%;
   size: 80%;
+  list-style: none;
 }

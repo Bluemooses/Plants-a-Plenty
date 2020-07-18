@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import VeggieCard from "../VeggieCard/VeggieCard";
 import Popup from "reactjs-popup";
 import "./VeggieItem.css";
-import { Card } from "@material-ui/core";
+import { Card, GridListTile, GridList } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 function VeggieItem(props) {
@@ -23,12 +23,14 @@ function VeggieItem(props) {
         closeOnDocumentClick
         trigger={
           <div className="flexVeg">
-            <img
-              className="veggieImage"
-              onClick={() => goToVeggie()}
-              src={props.veggie.img}
-              alt={props.veggies.key}
-            />
+            <GridListTile key={props.veggie.img} cols={GridListTile.cols || 1}>
+              <img
+                className="veggieImage"
+                onClick={() => goToVeggie()}
+                src={props.veggie.img}
+                alt={props.veggies.key}
+              />
+            </GridListTile>
           </div>
         }
         modal

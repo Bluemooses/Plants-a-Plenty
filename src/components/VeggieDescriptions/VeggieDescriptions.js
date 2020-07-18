@@ -9,7 +9,7 @@ function VeggieDescriptions(props) {
       <h2>Click Image For More Information</h2>
       {props.veggies.map((veggie, id) => {
         return (
-          <GridList cellHeight={160}>
+          <GridList cellHeight={160} cols={3}>
             <VeggieItem key={id} veggie={veggie} />{" "}
           </GridList>
         );

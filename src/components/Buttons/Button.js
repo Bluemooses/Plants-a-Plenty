@@ -18,7 +18,7 @@ const RemoveButton = withStyles({
   root: {
     background: "#ff1744",
     borderRadius: 22,
-    color: withTheme,
+    color: "white",
     height: "50%",
     width: "50",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
@@ -29,7 +29,7 @@ const BlueButton = withStyles({
   root: {
     background: "#482880",
     borderRadius: 22,
-    color: "ff9800",
+    color: "white",
     height: "50%",
     width: "50",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
@@ -40,7 +40,7 @@ const YellowButton = withStyles({
   root: {
     background: "#b2a429",
     borderRadius: 22,
-    color: "black",
+    color: "white",
     height: "50%",
     width: "50",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
