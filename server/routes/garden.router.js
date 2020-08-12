@@ -162,7 +162,7 @@ router.delete("/:id", rejectUnauthenticated, async (req, res) => {
     res.sendStatus(201);
   } catch (error) {
     await connection.query("ROLLBACK");
-    console.log("error in server side self report response POST", error);
+    console.log("error in server side self report response DELETE", error);
     res.sendStatus(500);
   } finally {
     connection.release();
