@@ -1,6 +1,10 @@
 # Get Planty
 
+   A fun interactive way to add vegetables into a garden, obtain details on growing specifications, and calculate theoretical yield of real-life translatable garden beds.
+
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+
+
 
 ## Prerequisites
 
@@ -53,3 +57,12 @@ Before pushing to Heroku, run `npm run build` in terminal. This will create a bu
 1. With the list of garden beds, a user is able to edit those from season to season, and delete a garden bed in the event
    a user moves.
    ![Edit Page](/src/images/edit-garden.png)
+
+
+## Outro
+
+I learned so many valuable skills developing this application.  
+Async/await functions, using redux as state management.
+Scoping an application, developing, and presenting.
+
+I wore all hats here, and had a riot doing it.
